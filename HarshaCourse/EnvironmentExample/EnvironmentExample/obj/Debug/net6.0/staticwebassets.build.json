@@ -1,0 +1,39 @@
+{
+  "Version": 1,
+  "Hash": "eLv5WCF6fuONR7S6BjFAVxUiVZSmrBcMgDB+sJHop3c=",
+  "Source": "EnvironmentExample",
+  "BasePath": "_content/EnvironmentExample",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "EnvironmentExample\\wwwroot",
+      "Source": "EnvironmentExample",
+      "ContentRoot": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\EnvironmentExample\\wwwroot\\",
+      "BasePath": "_content/EnvironmentExample",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\EnvironmentExample\\wwwroot\\StyleSheet.css",
+      "SourceId": "EnvironmentExample",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\EnvironmentExample\\wwwroot\\",
+      "BasePath": "_content/EnvironmentExample",
+      "RelativePath": "StyleSheet.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\StyleSheet.css"
+    }
+  ]
+}

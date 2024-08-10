@@ -1,0 +1,181 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6DFDACF9-FBFB-4105-8B49-F6738A854D3D}|EnvironmentExample\\EnvironmentExample.csproj|e:\\coding\\csharp\\aspnetcore\\harshacourse\\environmentexample\\environmentexample\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6DFDACF9-FBFB-4105-8B49-F6738A854D3D}|EnvironmentExample\\EnvironmentExample.csproj|solutionrelative:environmentexample\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DFDACF9-FBFB-4105-8B49-F6738A854D3D}|EnvironmentExample\\EnvironmentExample.csproj|e:\\coding\\csharp\\aspnetcore\\harshacourse\\environmentexample\\environmentexample\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6DFDACF9-FBFB-4105-8B49-F6738A854D3D}|EnvironmentExample\\EnvironmentExample.csproj|solutionrelative:environmentexample\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DFDACF9-FBFB-4105-8B49-F6738A854D3D}|EnvironmentExample\\EnvironmentExample.csproj|e:\\coding\\csharp\\aspnetcore\\harshacourse\\environmentexample\\environmentexample\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6DFDACF9-FBFB-4105-8B49-F6738A854D3D}|EnvironmentExample\\EnvironmentExample.csproj|solutionrelative:environmentexample\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DFDACF9-FBFB-4105-8B49-F6738A854D3D}|EnvironmentExample\\EnvironmentExample.csproj|e:\\coding\\csharp\\aspnetcore\\harshacourse\\environmentexample\\environmentexample\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6DFDACF9-FBFB-4105-8B49-F6738A854D3D}|EnvironmentExample\\EnvironmentExample.csproj|solutionrelative:environmentexample\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DFDACF9-FBFB-4105-8B49-F6738A854D3D}|EnvironmentExample\\EnvironmentExample.csproj|e:\\coding\\csharp\\aspnetcore\\harshacourse\\environmentexample\\environmentexample\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6DFDACF9-FBFB-4105-8B49-F6738A854D3D}|EnvironmentExample\\EnvironmentExample.csproj|solutionrelative:environmentexample\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DFDACF9-FBFB-4105-8B49-F6738A854D3D}|EnvironmentExample\\EnvironmentExample.csproj|e:\\coding\\csharp\\aspnetcore\\harshacourse\\environmentexample\\environmentexample\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6DFDACF9-FBFB-4105-8B49-F6738A854D3D}|EnvironmentExample\\EnvironmentExample.csproj|solutionrelative:environmentexample\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DFDACF9-FBFB-4105-8B49-F6738A854D3D}|EnvironmentExample\\EnvironmentExample.csproj|e:\\coding\\csharp\\aspnetcore\\harshacourse\\environmentexample\\environmentexample\\environmentexample.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{6DFDACF9-FBFB-4105-8B49-F6738A854D3D}|EnvironmentExample\\EnvironmentExample.csproj|solutionrelative:environmentexample\\environmentexample.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DFDACF9-FBFB-4105-8B49-F6738A854D3D}|EnvironmentExample\\EnvironmentExample.csproj|e:\\coding\\csharp\\aspnetcore\\harshacourse\\environmentexample\\environmentexample\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6DFDACF9-FBFB-4105-8B49-F6738A854D3D}|EnvironmentExample\\EnvironmentExample.csproj|solutionrelative:environmentexample\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DFDACF9-FBFB-4105-8B49-F6738A854D3D}|EnvironmentExample\\EnvironmentExample.csproj|e:\\coding\\csharp\\aspnetcore\\harshacourse\\environmentexample\\environmentexample\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6DFDACF9-FBFB-4105-8B49-F6738A854D3D}|EnvironmentExample\\EnvironmentExample.csproj|solutionrelative:environmentexample\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DFDACF9-FBFB-4105-8B49-F6738A854D3D}|EnvironmentExample\\EnvironmentExample.csproj|e:\\coding\\csharp\\aspnetcore\\harshacourse\\environmentexample\\environmentexample\\wwwroot\\stylesheet.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{6DFDACF9-FBFB-4105-8B49-F6738A854D3D}|EnvironmentExample\\EnvironmentExample.csproj|solutionrelative:environmentexample\\wwwroot\\stylesheet.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\EnvironmentExample\\appsettings.json",
+              "RelativeDocumentMoniker": "EnvironmentExample\\appsettings.json",
+              "ToolTip": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\EnvironmentExample\\appsettings.json",
+              "RelativeToolTip": "EnvironmentExample\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-10T12:11:02.164Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\EnvironmentExample\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "EnvironmentExample\\Views\\_ViewImports.cshtml",
+              "ToolTip": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\EnvironmentExample\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "EnvironmentExample\\Views\\_ViewImports.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-09T12:33:24.92Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\EnvironmentExample\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "EnvironmentExample\\Views\\Home\\Index.cshtml",
+              "ToolTip": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\EnvironmentExample\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "EnvironmentExample\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-08T19:38:54.362Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\EnvironmentExample\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "EnvironmentExample\\Views\\_ViewStart.cshtml",
+              "ToolTip": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\EnvironmentExample\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "EnvironmentExample\\Views\\_ViewStart.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-08T19:46:49.603Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\EnvironmentExample\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "EnvironmentExample\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\EnvironmentExample\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "EnvironmentExample\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-08T19:41:19.192Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\EnvironmentExample\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "EnvironmentExample\\Controllers\\HomeController.cs",
+              "ToolTip": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\EnvironmentExample\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "EnvironmentExample\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABEAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-08T19:38:32.39Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EnvironmentExample.csproj",
+              "DocumentMoniker": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\EnvironmentExample\\EnvironmentExample.csproj",
+              "RelativeDocumentMoniker": "EnvironmentExample\\EnvironmentExample.csproj",
+              "ToolTip": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\EnvironmentExample\\EnvironmentExample.csproj",
+              "RelativeToolTip": "EnvironmentExample\\EnvironmentExample.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-08-08T19:37:53.282Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\EnvironmentExample\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "EnvironmentExample\\Properties\\launchSettings.json",
+              "ToolTip": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\EnvironmentExample\\Properties\\launchSettings.json",
+              "RelativeToolTip": "EnvironmentExample\\Properties\\launchSettings.json",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAAAAkAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-08T19:34:49.906Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "StyleSheet.css",
+              "DocumentMoniker": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\EnvironmentExample\\wwwroot\\StyleSheet.css",
+              "RelativeDocumentMoniker": "EnvironmentExample\\wwwroot\\StyleSheet.css",
+              "ToolTip": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\EnvironmentExample\\wwwroot\\StyleSheet.css",
+              "RelativeToolTip": "EnvironmentExample\\wwwroot\\StyleSheet.css",
+              "ViewState": "AQIAAB0BAAAAAAAAAAA5wHMBAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-08-08T19:32:30.339Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\EnvironmentExample\\Program.cs",
+              "RelativeDocumentMoniker": "EnvironmentExample\\Program.cs",
+              "ToolTip": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\EnvironmentExample\\EnvironmentExample\\Program.cs",
+              "RelativeToolTip": "EnvironmentExample\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-08T19:27:44.881Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
