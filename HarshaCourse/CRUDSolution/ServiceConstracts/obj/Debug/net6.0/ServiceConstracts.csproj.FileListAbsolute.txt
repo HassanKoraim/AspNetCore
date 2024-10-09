@@ -1,0 +1,16 @@
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\ServiceConstracts\bin\Debug\net6.0\ServiceConstracts.deps.json
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\ServiceConstracts\bin\Debug\net6.0\ServiceConstracts.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\ServiceConstracts\bin\Debug\net6.0\ServiceConstracts.pdb
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\ServiceConstracts\bin\Debug\net6.0\Entities.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\ServiceConstracts\bin\Debug\net6.0\Entities.pdb
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\ServiceConstracts\obj\Debug\net6.0\ServiceConstracts.csproj.AssemblyReference.cache
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\ServiceConstracts\obj\Debug\net6.0\ServiceConstracts.GeneratedMSBuildEditorConfig.editorconfig
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\ServiceConstracts\obj\Debug\net6.0\ServiceConstracts.AssemblyInfoInputs.cache
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\ServiceConstracts\obj\Debug\net6.0\ServiceConstracts.AssemblyInfo.cs
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\ServiceConstracts\obj\Debug\net6.0\ServiceConstracts.csproj.CoreCompileInputs.cache
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\ServiceConstracts\obj\Debug\net6.0\ServiceConstracts.sourcelink.json
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\ServiceConstracts\obj\Debug\net6.0\ServiceC.24FFECCB.Up2Date
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\ServiceConstracts\obj\Debug\net6.0\ServiceConstracts.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\ServiceConstracts\obj\Debug\net6.0\refint\ServiceConstracts.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\ServiceConstracts\obj\Debug\net6.0\ServiceConstracts.pdb
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\ServiceConstracts\obj\Debug\net6.0\ref\ServiceConstracts.dll
