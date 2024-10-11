@@ -9,7 +9,7 @@ namespace Services
         private readonly List<Country> _countries;
         public CountriesService()
         {
-            _countries = new List<Country>() { };
+            _countries = new List<Country>();
         }
         public CountryResponse AddCountry(CountryAddRequest countryAddRequest)
         {
@@ -51,9 +51,6 @@ namespace Services
                 return null;
             }
             return country.ToCountryResponse();
-
-            
-
         }
 
     }

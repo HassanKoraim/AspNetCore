@@ -22,6 +22,12 @@ namespace ServiceConstracts
         /// <returns>Returns a list of objects of PersonResponse type</returns>
         List<PersonResponse> GetAllPersons();
         PersonResponse? UpdatePersonName(string? personName);
-        void DeletePerson(string? personName);  
+        void DeletePerson(string? personName);
+        /// <summary>
+        /// Returns Person object based on the given person id
+        /// </summary>
+        /// <param name="personId">Person Id to search</param>
+        /// <returns>Returns matching person object</returns>
+        PersonResponse? GetPersonByPersonId(Guid? personId);
     }
 }

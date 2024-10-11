@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Entities
 {
@@ -8,8 +9,13 @@ namespace Entities
     /// </summary>
     public class Person
     {
+        [Required (ErrorMessage = "Person Id can't be blank")]
         public Guid PersonId { get; set; }
+
+        [Required(ErrorMessage = "Person Name can't be blank")]
         public string? PersonName { get; set; }
+
+        [Required(ErrorMessage = "Email can't be blank")]
         public string? Email { get; set; }
         public DateTime? DateOfBirth { get; set; }
         public string? Gender { get; set; }

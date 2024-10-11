@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Entities;
 using ServiceConstracts.Enums;
+using System.ComponentModel.DataAnnotations;
+
 namespace ServiceConstracts.DTO
 {
     /// <summary>
@@ -9,7 +11,11 @@ namespace ServiceConstracts.DTO
     /// </summary>
     public class PersonAddRequest
     {
+        [Required(ErrorMessage = "Person Name can't be blank")]
         public string? PersonName { get; set; }
+
+        [Required(ErrorMessage = "Email can't be blank")]
+        [EmailAddress(ErrorMessage = "Email value should be a valid Email adrress")]
         public string? Email { get; set; }
         public DateTime? DateOfBirth { get; set; }
         public GenderOptions? Gender { get; set; }

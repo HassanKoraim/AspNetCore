@@ -2,14 +2,17 @@
 using ServiceConstracts.DTO;
 using Services;
 using ServiceConstracts.Enums;
+using Entities;
 namespace CRUDTests
 {
     public class PersonsServiceTest
     {
         private readonly IPersonsService _personsService;
+        private readonly ICountriesService _countriesService;
         public PersonsServiceTest()
         {
             _personsService = new PersonsService();
+            _countriesService = new CountriesService();
         }
         #region AddPerson
         // When supply null value as PersonAddRequest, it should throw ArgumentNullException
@@ -77,6 +80,61 @@ namespace CRUDTests
             //Assert
             Assert.True(personResponse.PersonId != Guid.Empty);
             Assert.Contains(personResponse, persons_list);
+        }
+        #endregion
+
+        #region GetPersonByPersonId
+
+        [Fact]
+        public void GetPersonByPersonId_NullPersonId()
+        {
+            // Arrange
+            Guid? personId = null;
+            
+            //Act 
+           // PersonResponse? personResponse = _personsService.GetPersonByPersonId(personId);
+
+            //Assert
+            Assert.Null(personId);
+        }
+
+        [Fact]
+        public void GetPersonByPersonId_PersonIsNull()
+        {
+            //Arrange
+            PersonResponse? personResponse = null;
+
+            //Assert
+            Assert.Throws<ArgumentNullException>(() => 
+                //Act
+                _personsService.GetPersonByPersonId(personResponse?.PersonId) 
+            );
+            
+        }
+        [Fact]
+        public void GetPersonByPersonId_ProperPerson()
+        {
+            //Arrange 
+            CountryAddRequest countryRequest = new CountryAddRequest() { CountryName = "Canada" };
+            CountryResponse countryResponse =
+                _countriesService.AddCountry(countryRequest);
+            PersonAddRequest personRequest = new PersonAddRequest()
+            {
+                PersonName = "Hassan",
+                Email = "HassanKoriam2@gmail.com",
+                DateOfBirth = Convert.ToDateTime("8-7-2000"),
+                Gender = GenderOptions.male,
+                Address = "Elwakf",
+                ReceiveNewsLetter = true,
+                CountryId = countryResponse.CountryId
+            };
+            PersonResponse? personResponse_from_add = _personsService.AddPerson(personRequest);
+
+            //Act
+            PersonResponse? personResponse_from_get = _personsService.GetPersonByPersonId(personResponse_from_add.PersonId);
+
+            //Assert
+            Assert.Equal(personResponse_from_get, personResponse_from_add);
         }
         #endregion
     }
