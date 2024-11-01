@@ -1,0 +1,15 @@
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CollectionofObjectsExample\CollectionofObjectsExample\bin\Debug\net6.0\CollectionofObjectsExample.exe
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CollectionofObjectsExample\CollectionofObjectsExample\bin\Debug\net6.0\CollectionofObjectsExample.deps.json
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CollectionofObjectsExample\CollectionofObjectsExample\bin\Debug\net6.0\CollectionofObjectsExample.runtimeconfig.json
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CollectionofObjectsExample\CollectionofObjectsExample\bin\Debug\net6.0\CollectionofObjectsExample.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CollectionofObjectsExample\CollectionofObjectsExample\bin\Debug\net6.0\CollectionofObjectsExample.pdb
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CollectionofObjectsExample\CollectionofObjectsExample\obj\Debug\net6.0\CollectionofObjectsExample.GeneratedMSBuildEditorConfig.editorconfig
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CollectionofObjectsExample\CollectionofObjectsExample\obj\Debug\net6.0\CollectionofObjectsExample.AssemblyInfoInputs.cache
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CollectionofObjectsExample\CollectionofObjectsExample\obj\Debug\net6.0\CollectionofObjectsExample.AssemblyInfo.cs
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CollectionofObjectsExample\CollectionofObjectsExample\obj\Debug\net6.0\CollectionofObjectsExample.csproj.CoreCompileInputs.cache
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CollectionofObjectsExample\CollectionofObjectsExample\obj\Debug\net6.0\CollectionofObjectsExample.sourcelink.json
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CollectionofObjectsExample\CollectionofObjectsExample\obj\Debug\net6.0\CollectionofObjectsExample.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CollectionofObjectsExample\CollectionofObjectsExample\obj\Debug\net6.0\refint\CollectionofObjectsExample.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CollectionofObjectsExample\CollectionofObjectsExample\obj\Debug\net6.0\CollectionofObjectsExample.pdb
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CollectionofObjectsExample\CollectionofObjectsExample\obj\Debug\net6.0\CollectionofObjectsExample.genruntimeconfig.cache
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CollectionofObjectsExample\CollectionofObjectsExample\obj\Debug\net6.0\ref\CollectionofObjectsExample.dll
