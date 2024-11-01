@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Entities;
+using ServiceConstracts.Enums;
 
 namespace ServiceConstracts.DTO
 {
@@ -15,7 +16,7 @@ namespace ServiceConstracts.DTO
         public DateTime? DateOfBirth { get; set; }
         public string? Gender { get; set; }
         public Guid? CountryId { get; set; }
-        public string? Country { get; set; }
+        public string? country { get; set; }
         public string? Address { get; set; }
         public bool ReceiveNewsLetter { get; set; }
         public double? Age { get; set; }
@@ -30,17 +31,40 @@ namespace ServiceConstracts.DTO
         {
             if (obj == null) return false;
             if (obj.GetType() != typeof(PersonResponse) ) return false;
-            PersonResponse personResponse = obj as PersonResponse;
-            return PersonId == personResponse.PersonId &&
+            PersonResponse? personResponse = obj as PersonResponse;
+            return PersonId == personResponse?.PersonId &&
                 PersonName == personResponse.PersonName && Email == personResponse.Email && 
                 DateOfBirth == personResponse.DateOfBirth && Gender == personResponse.Gender  &&
-                CountryId == personResponse.CountryId && Country == personResponse.Country &&
+                CountryId == personResponse.CountryId && country == personResponse.country &&
                 Address == personResponse.Address && ReceiveNewsLetter == personResponse.ReceiveNewsLetter;
         }
         public override int GetHashCode()
         {
             return base.GetHashCode();
         }
+
+        public override string ToString()
+        {
+            return $"Person Id : {PersonId}, Person Name: {PersonName}," +
+                $"Email: {Email}, Gender: {Gender}, Country: {country}" +
+                $"Address: {Address},BirthDay: {DateOfBirth}, Age: {Age},  Country id : {CountryId}";
+        }
+        public PersonUpdateRequest ToPersonUpdateRequest()
+        {
+            return new PersonUpdateRequest()
+            {
+                PersonId = PersonId,
+                PersonName = PersonName,
+                Email = Email,
+                DateOfBirth = DateOfBirth,
+                Gender = (GenderOptions)Enum.Parse(typeof(GenderOptions),Gender, true),
+                Address = Address,
+                ReceiveNewsLetter = ReceiveNewsLetter,
+                CountryId = CountryId
+            };
+
+        }
+
 
     }
     public static class PersonExtensions
@@ -50,11 +74,12 @@ namespace ServiceConstracts.DTO
         /// </summary>
         /// <param name="person">The Person object to convert</param>
         /// <returns>returns the converted PersonResponse object</returns>
-        public static PersonResponse ToPersonResponse(this Person person)
+        public static PersonResponse? ToPersonResponse(this Person? person)
         {
             return new PersonResponse() { PersonId = person.PersonId,
                 PersonName = person.PersonName, Email = person.Email,
                 DateOfBirth = person.DateOfBirth, Gender = person.Gender,
+                CountryId = person.CountryId,
                 Address = person.Address, ReceiveNewsLetter = person.ReceiveNewsLetter,
                 Age = (person.DateOfBirth != null)? Math.Round((DateTime.Now - person.DateOfBirth.Value).TotalDays/365.25): null};
         }

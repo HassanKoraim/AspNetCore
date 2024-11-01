@@ -25,10 +25,11 @@ namespace ServiceConstracts.DTO
         /// <summary>
         /// Converts the current PersonAddRequest object into a new Person object 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Person Object</returns>
         public Person ToPerson()
         {
-            return new Person { PersonId = Guid.NewGuid() ,PersonName = PersonName, 
+            //PersonId = Guid.NewGuid() ,
+            return new Person { PersonName = PersonName, 
                 Email = Email, DateOfBirth = DateOfBirth, Gender = Gender.ToString(), 
                 CountryId = CountryId, Address = Address, ReceiveNewsLetter = ReceiveNewsLetter};
 

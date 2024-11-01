@@ -1,0 +1,15 @@
+E:\Coding\CSharp\AspNetCore\HarshaCourse\ExtensionMethods.Example\ExtensionMethods.Example\bin\Debug\net6.0\ExtensionMethods.Example.exe
+E:\Coding\CSharp\AspNetCore\HarshaCourse\ExtensionMethods.Example\ExtensionMethods.Example\bin\Debug\net6.0\ExtensionMethods.Example.deps.json
+E:\Coding\CSharp\AspNetCore\HarshaCourse\ExtensionMethods.Example\ExtensionMethods.Example\bin\Debug\net6.0\ExtensionMethods.Example.runtimeconfig.json
+E:\Coding\CSharp\AspNetCore\HarshaCourse\ExtensionMethods.Example\ExtensionMethods.Example\bin\Debug\net6.0\ExtensionMethods.Example.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\ExtensionMethods.Example\ExtensionMethods.Example\bin\Debug\net6.0\ExtensionMethods.Example.pdb
+E:\Coding\CSharp\AspNetCore\HarshaCourse\ExtensionMethods.Example\ExtensionMethods.Example\obj\Debug\net6.0\ExtensionMethods.Example.GeneratedMSBuildEditorConfig.editorconfig
+E:\Coding\CSharp\AspNetCore\HarshaCourse\ExtensionMethods.Example\ExtensionMethods.Example\obj\Debug\net6.0\ExtensionMethods.Example.AssemblyInfoInputs.cache
+E:\Coding\CSharp\AspNetCore\HarshaCourse\ExtensionMethods.Example\ExtensionMethods.Example\obj\Debug\net6.0\ExtensionMethods.Example.AssemblyInfo.cs
+E:\Coding\CSharp\AspNetCore\HarshaCourse\ExtensionMethods.Example\ExtensionMethods.Example\obj\Debug\net6.0\ExtensionMethods.Example.csproj.CoreCompileInputs.cache
+E:\Coding\CSharp\AspNetCore\HarshaCourse\ExtensionMethods.Example\ExtensionMethods.Example\obj\Debug\net6.0\ExtensionMethods.Example.sourcelink.json
+E:\Coding\CSharp\AspNetCore\HarshaCourse\ExtensionMethods.Example\ExtensionMethods.Example\obj\Debug\net6.0\ExtensionMethods.Example.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\ExtensionMethods.Example\ExtensionMethods.Example\obj\Debug\net6.0\refint\ExtensionMethods.Example.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\ExtensionMethods.Example\ExtensionMethods.Example\obj\Debug\net6.0\ExtensionMethods.Example.pdb
+E:\Coding\CSharp\AspNetCore\HarshaCourse\ExtensionMethods.Example\ExtensionMethods.Example\obj\Debug\net6.0\ExtensionMethods.Example.genruntimeconfig.cache
+E:\Coding\CSharp\AspNetCore\HarshaCourse\ExtensionMethods.Example\ExtensionMethods.Example\obj\Debug\net6.0\ref\ExtensionMethods.Example.dll

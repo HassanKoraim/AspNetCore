@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ServiceConstracts.DTO;
+using ServiceConstracts.Enums;
 
 namespace ServiceConstracts
 {
@@ -21,13 +22,43 @@ namespace ServiceConstracts
         /// </summary>
         /// <returns>Returns a list of objects of PersonResponse type</returns>
         List<PersonResponse> GetAllPersons();
-        PersonResponse? UpdatePersonName(string? personName);
-        void DeletePerson(string? personName);
         /// <summary>
         /// Returns Person object based on the given person id
         /// </summary>
         /// <param name="personId">Person Id to search</param>
         /// <returns>Returns matching person object</returns>
         PersonResponse? GetPersonByPersonId(Guid? personId);
+        /// <summary>
+        /// Returns all persons object that matches with the given search field and search string
+        /// </summary>
+        /// <param name="searchBy">search field to search</param>
+        /// <param name="searchString">search string to search</param>
+        /// <returns>Returns all matching Persons based on the given search
+        /// field and search string</returns>
+        List<PersonResponse> GetFilteredPersons(string? searchBy, string? searchString);
+
+        /// <summary>
+        /// Returns Sorted List of Persons
+        /// </summary>
+        /// <param name="allPersons">Reperesent list of persons to sort</param>
+        /// <param name="sortBy">Name of property (Key), based on which the persons should be sorted</param>
+        /// <param name="sortOrder">ASC or DESC</param>
+        /// <returns>Returns sorted persons as PersonResponse List</returns>
+        List<PersonResponse> GetSortedPersons(List<PersonResponse> allPersons, string sortBy, SortOrderOptions sortOrder);
+
+        /// <summary>
+        /// Updates the specified Person details based on the given Person Id 
+        /// </summary>
+        /// <param name="updatePersonRequest">Person details to update, including person id</param>
+        /// <returns>Returns the person response object after updation</returns>
+        PersonResponse? UpdatePerson(PersonUpdateRequest? updatePersonRequest);
+
+        /// <summary>
+        /// Deletes a Person based on given Person Id 
+        /// </summary>
+        /// <param name="personId">PersonId to delete</param>
+        /// <returns>Returns true, if deletion is successful; otherwise false </returns>
+        bool DeletePerson(Guid? personId);
+
     }
 }
