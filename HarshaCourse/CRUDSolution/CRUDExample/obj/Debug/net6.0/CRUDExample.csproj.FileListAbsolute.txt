@@ -25,3 +25,13 @@ E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\obj\Debug\net6
 E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\obj\Debug\net6.0\CRUDExample.pdb
 E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\obj\Debug\net6.0\CRUDExample.genruntimeconfig.cache
 E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\obj\Debug\net6.0\ref\CRUDExample.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\obj\Debug\net6.0\CRUDExample.RazorAssemblyInfo.cache
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\obj\Debug\net6.0\CRUDExample.RazorAssemblyInfo.cs
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\bin\Debug\net6.0\Entities.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\bin\Debug\net6.0\ServiceConstracts.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\bin\Debug\net6.0\Services.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\bin\Debug\net6.0\Entities.pdb
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\bin\Debug\net6.0\ServiceConstracts.pdb
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\bin\Debug\net6.0\Services.pdb
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\obj\Debug\net6.0\CRUDExample.csproj.AssemblyReference.cache
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\obj\Debug\net6.0\CRUDExam.61951AF1.Up2Date

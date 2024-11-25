@@ -1,11 +1,68 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "Entities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Entities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Entities.dll": {}
+        }
+      },
+      "ServiceConstracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Entities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ServiceConstracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ServiceConstracts.dll": {}
+        }
+      },
+      "Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "ServiceConstracts": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Services.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Entities/1.0.0": {
+      "type": "project",
+      "path": "../Entities/Entities.csproj",
+      "msbuildProject": "../Entities/Entities.csproj"
+    },
+    "ServiceConstracts/1.0.0": {
+      "type": "project",
+      "path": "../ServiceConstracts/ServiceConstracts.csproj",
+      "msbuildProject": "../ServiceConstracts/ServiceConstracts.csproj"
+    },
+    "Services/1.0.0": {
+      "type": "project",
+      "path": "../Services/Services.csproj",
+      "msbuildProject": "../Services/Services.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "Entities >= 1.0.0",
+      "ServiceConstracts >= 1.0.0",
+      "Services >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\start\\.nuget\\packages\\": {}
@@ -28,13 +85,22 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\CRUDSolution\\Entities\\Entities.csproj": {
+              "projectPath": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\CRUDSolution\\Entities\\Entities.csproj"
+            },
+            "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\CRUDSolution\\ServiceConstracts\\ServiceConstracts.csproj": {
+              "projectPath": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\CRUDSolution\\ServiceConstracts\\ServiceConstracts.csproj"
+            },
+            "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\CRUDSolution\\Services\\Services.csproj": {
+              "projectPath": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\CRUDSolution\\Services\\Services.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -70,7 +136,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404\\RuntimeIdentifierGraph.json"
       }
     }
   }
