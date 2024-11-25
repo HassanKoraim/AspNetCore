@@ -6,18 +6,47 @@
     ViewBag.Title = "Persons";
 }
 <h1>@ViewBag.Title</h1>
+<form action="~/persons/index" method="get">
+<div class="box flex">
+    <div class="flex-1">
+        <select class="form-input" name="searchBy" >
+            
+                @foreach(var field in ViewBag.SearchFields)
+                {
+                    if(field.Key == ViewBag.currentSearchBy)
+                    {
+                        <option value="@field.Key" selected>@field.Value</option>
+                    }
+                    else
+                    {
+                        <option value="@field.Key">@field.Value</option>
+                    }
+
+                    
+                }       
+        </select>
+    </div>
+    <div class="flex-1">
+        <input type="search" id="search" class="form-input" placeholder="Search" name="searchString" value=@ViewBag.currentSearchString />
+    </div>
+    <div class="flex-1">
+        <button class="button button-blue-back">Search</button>
+        <a href="~/persons/index" class="link-hover">Clear All</a>
+    </div>
+</div>
 <div class="table w-100 mt">
     <table>
         <thead>
             <tr>
-                <th>Person Name</th>
-                <th>Email</th>
-                <th>DateOfBirth</th>
-                <th>Age</th>
-                <th>Gender</th>
-                <th>Country</th>
-                <th>Address</th>
-                <th>Receive News Letter</th>
+                    <th>PersonName</th>
+                    <th>Email</th>
+                    <th>DateOfBirth</th>
+                    <th>Age</th>
+                    <th>Gender </th>
+                    <th>country</th>
+                    <th>Address</th>
+                    <th>ReceiveNewsLetter</th>
+                   
             </tr>
         </thead>
         <tbody>
@@ -41,3 +70,4 @@
 </tbody>
 </table>
 </div>
+</form>
