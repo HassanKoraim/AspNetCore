@@ -23,15 +23,22 @@ namespace CRUDExample.Controllers
             {
                 {nameof(PersonResponse.PersonName), "Person Name" },
                 {nameof(PersonResponse.Email), "Email" },
-                {nameof(PersonResponse.Address), "Address" },
                 {nameof(PersonResponse.DateOfBirth), "Date of Birth" },
+                {nameof(PersonResponse.Age), "Age" },
                 {nameof(PersonResponse.Gender), "Gender" },
-                {nameof(PersonResponse.Age), "Age" }
+                {nameof(PersonResponse.country), "Country" },
+                {nameof(PersonResponse.Address), "Address" },
+                {nameof(PersonResponse.ReceiveNewsLetter), "Receive News Letter" },
             };
             List<PersonResponse> AllPersons = _personsService.GetFilteredPersons(searchBy,searchString);
             ViewBag.currentSearchBy = searchBy;
             ViewBag.currentSearchString = searchString;
-            return View(AllPersons);
+
+            //Sort
+            List <PersonResponse> SortedPersons = _personsService.GetSortedPersons(AllPersons, sortBy, sortOrder);
+            ViewBag.currentSortBy = sortBy;
+            ViewBag.currentSortOrder = sortOrder.ToString();
+            return View(SortedPersons);
         }
     }
 }

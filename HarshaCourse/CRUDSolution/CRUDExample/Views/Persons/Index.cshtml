@@ -38,15 +38,83 @@
     <table>
         <thead>
             <tr>
-                    <th>PersonName</th>
-                    <th>Email</th>
-                    <th>DateOfBirth</th>
-                    <th>Age</th>
-                    <th>Gender </th>
-                    <th>country</th>
-                    <th>Address</th>
-                    <th>ReceiveNewsLetter</th>
-                   
+                @*
+                    Using The Partail View to render the column headers for the grid.
+                *@
+                    @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+                    {
+                        {"ColumnName", nameof(PersonResponse.PersonName)},
+                        {"DisplayName", "Person Name"}
+                    })
+                    @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+                    {
+                    {"ColumnName", nameof(PersonResponse.Email)},
+                    {"DisplayName", "Email"}
+                    })
+                    @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+                    {
+                    {"ColumnName", nameof(PersonResponse.DateOfBirth)},
+                    {"DisplayName", "Date Of Birth"}
+                    })
+                    @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+                    {
+                    {"ColumnName", nameof(PersonResponse.Age)},
+                    {"DisplayName", "Age"}
+                    })
+                    @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+                    {
+                    {"ColumnName", nameof(PersonResponse.Gender)},
+                    {"DisplayName", "Gender"}
+                    })
+
+                    @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+                    {
+                    {"ColumnName", nameof(PersonResponse.country)},
+                    {"DisplayName", "Country"}
+                    })
+                    @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+                    {
+                    {"ColumnName", nameof(PersonResponse.Address)},
+                    {"DisplayName", "Address"}
+                    })
+                    @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+                    {
+                    {"ColumnName", nameof(PersonResponse.ReceiveNewsLetter)},
+                    {"DisplayName", "Receive News Letter"}
+                    })
+                   @*
+                    The above code can be replaced with the following code without Partail View
+                    @foreach(var item in ViewBag.SearchFields)
+                    {
+                        @if (ViewBag.currentSortBy == item.Key && (ViewBag.currentSortOrder == SortOrderOptions.ASC.ToString()))
+                        {
+                            <th>
+                                <a href="~/persons/index?searchBy=@ViewBag.currentSearchBy&searchString=@ViewBag.currentSearchString&sortBy=@item.Key&sortOrder=@SortOrderOptions.DESC">
+                                    @item.Value
+                                </a>
+                                <i class="fa-solid fa-sort-up" />
+                            </th>
+                        }
+                        else if (ViewBag.currentSortBy == item.Key && (ViewBag.currentSortOrder == SortOrderOptions.DESC.ToString()))
+                        {
+                            <th>
+                                <a href="~/persons/index?searchBy=@ViewBag.currentSearchBy&searchString=@ViewBag.currentSearchString&sortBy=@item.Key&sortOrder=@SortOrderOptions.ASC">
+                                    @item.Value
+                                </a>
+                                <i class="fa-solid fa-sort-down" />
+                            </th>
+                        }
+                        else
+                        {
+                            <th>
+                                <a href="~/persons/index?searchBy=@ViewBag.currentSearchBy&searchString=@ViewBag.currentSearchString&sortBy=@item.Key&sortOrder=@SortOrderOptions.DESC">
+                                    @item.Value
+                                </a>
+                                <i class="fa-solid fa-sort-up" />
+                            </th>
+                        }
+                    }
+                    *@
             </tr>
         </thead>
         <tbody>

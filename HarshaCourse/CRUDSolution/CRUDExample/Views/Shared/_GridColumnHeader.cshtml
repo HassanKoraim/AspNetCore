@@ -1,0 +1,30 @@
+﻿@*
+    Partial View to render the column header for the grid, and to handle sorting.
+*@
+@if (ViewBag.currentSortBy == @ViewBag.ColumnName && (@ViewBag.currentSortOrder == SortOrderOptions.ASC.ToString()))
+{
+    <th>
+        <a href="~/persons/index?searchBy=@(ViewBag.currentSearchBy)&searchString=@(ViewBag.currentSearchString)&sortBy=@(ViewBag.ColumnName)&sortOrder=@(SortOrderOptions.DESC)">
+            @(ViewBag.DisplayName)
+        </a>
+        <i class="fa-solid fa-sort-up" />
+    </th>
+}
+else if (ViewBag.currentSortBy == @ViewBag.ColumnName && (@ViewBag.currentSortOrder == SortOrderOptions.DESC.ToString()))
+{
+    <th>
+        <a href="~/persons/index?searchBy=@ViewBag.currentSearchBy&searchString=@ViewBag.currentSearchString&sortBy=@(ViewBag.ColumnName)&sortOrder=@SortOrderOptions.ASC">
+            @(ViewBag.DisplayName)
+        </a>
+        <i class="fa-solid fa-sort-down" />
+    </th>
+}
+else
+{
+    <th>
+        <a href="~/persons/index?searchBy=@(ViewBag.currentSearchBy)&searchString=@(ViewBag.currentSearchString)&sortBy=@(ViewBag.ColumnName)&sortOrder=@(SortOrderOptions.ASC)">
+            @(ViewBag.DisplayName)
+        </a>
+        @*<i class="fa-solid fa-sort-up" />*@
+    </th>
+}
