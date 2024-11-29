@@ -4,15 +4,19 @@ using Services;
 using ServiceConstracts.DTO;
 using ServiceConstracts.Enums;
 using System.Collections.Generic;
+using Entities;
 
 namespace CRUDExample.Controllers
 {
     public class PersonsController : Controller
     {
+        // private fields
         private readonly IPersonsService _personsService;
-        public PersonsController(IPersonsService personsService)
+        private readonly ICountriesService _countriesService;
+        public PersonsController(IPersonsService personsService, ICountriesService countriesService)
         {
             _personsService = personsService;
+            _countriesService = countriesService;
         }
         [Route("persons/index")]
         [Route("/")]
@@ -40,5 +44,33 @@ namespace CRUDExample.Controllers
             ViewBag.currentSortOrder = sortOrder.ToString();
             return View(SortedPersons);
         }
-    }
+
+        // Excutes when the users clicks on "Create Person" hyperlink (while openning the create view)     
+        [Route("persons/create")]
+        [HttpGet]
+        public IActionResult Create()
+        {
+            List<CountryResponse> countries = _countriesService.GetAllCountries();
+            ViewBag.Countries = countries;
+            return View();
+        }
+
+        [Route("persons/create")]
+        [HttpPost]
+        public IActionResult Create(PersonAddRequest personAddRequest)
+        {
+            if (!ModelState.IsValid) 
+            {
+                List<CountryResponse> countries = _countriesService.GetAllCountries();
+                ViewBag.Countries = countries;
+
+                ViewBag.Errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                return View();
+            }
+            // call the service method
+            PersonResponse personResponse = _personsService.AddPerson(personAddRequest);
+            // navigate to Index() action method (it makes another get request to "persons/index")   
+            return RedirectToAction("Index","Persons");
+        }      
+}
 }
