@@ -71,6 +71,34 @@ namespace CRUDExample.Controllers
             PersonResponse personResponse = _personsService.AddPerson(personAddRequest);
             // navigate to Index() action method (it makes another get request to "persons/index")   
             return RedirectToAction("Index","Persons");
-        }      
-}
+        }
+
+        [Route("persons/edit")]
+        [HttpGet]
+        public IActionResult Edit(Guid id)
+        {
+            List<CountryResponse> countries = _countriesService.GetAllCountries();
+            ViewBag.Countries = countries;
+            PersonResponse? personResponse = _personsService.GetPersonByPersonId(id);
+            return View(personResponse);
+        }
+
+        [Route("persons/edit")]
+        [HttpPost]
+        public IActionResult Edit(PersonUpdateRequest personUpdateRequest)
+        {
+            _personsService.UpdatePerson(personUpdateRequest);
+            return RedirectToAction("Index","Persons");
+        }
+
+        [Route("persons/delete")]
+        [HttpPost]
+        public IActionResult Delete(Guid id)
+        { 
+            // call Delete method on service
+            _personsService.DeletePerson(id);
+            return RedirectToAction("Index","Persons");
+        }
+
+    }
 }

@@ -1,6 +1,6 @@
 ﻿@using ServiceConstracts;
 @using Entities;
-@model IEnumerable<PersonResponse> 
+@model IEnumerable<PersonResponse>
 
 @{
     ViewBag.Title = "Persons";
@@ -8,13 +8,13 @@
 <h1>@ViewBag.Title</h1>
 <a href="~/persons/create">Create New Person</a>
 <form action="~/persons/index" method="get">
-<div class="box flex">
-    <div class="flex-1">
-        <select class="form-input" name="searchBy" >
-            
-                @foreach(var field in ViewBag.SearchFields)
+    <div class="box flex">
+        <div class="flex-1">
+            <select class="form-input" name="searchBy">
+
+                @foreach (var field in ViewBag.SearchFields)
                 {
-                    if(field.Key == ViewBag.currentSearchBy)
+                    if (field.Key == ViewBag.currentSearchBy)
                     {
                         <option value="@field.Key" selected>@field.Value</option>
                     }
@@ -23,100 +23,99 @@
                         <option value="@field.Key">@field.Value</option>
                     }
 
-                    
-                }       
-        </select>
+
+                }
+            </select>
+        </div>
+        <div class="flex-1">
+            <input type="search" id="search" class="form-input" placeholder="Search" name="searchString" value=@ViewBag.currentSearchString />
+        </div>
+        <div class="flex-1">
+            <button class="button button-blue-back">Search</button>
+            <a href="~/persons/index" class="link-hover">Clear All</a>
+        </div>
     </div>
-    <div class="flex-1">
-        <input type="search" id="search" class="form-input" placeholder="Search" name="searchString" value=@ViewBag.currentSearchString />
-    </div>
-    <div class="flex-1">
-        <button class="button button-blue-back">Search</button>
-        <a href="~/persons/index" class="link-hover">Clear All</a>
-    </div>
-</div>
+</form>
 <div class="table w-100 mt">
     <table>
         <thead>
-            <tr>
-                @*
-                    Using The Partail View to render the column headers for the grid.
-                *@
-                    @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
-                    {
-                        {"ColumnName", nameof(PersonResponse.PersonName)},
-                        {"DisplayName", "Person Name"}
-                    })
-                    @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
-                    {
-                    {"ColumnName", nameof(PersonResponse.Email)},
-                    {"DisplayName", "Email"}
-                    })
-                    @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
-                    {
-                    {"ColumnName", nameof(PersonResponse.DateOfBirth)},
-                    {"DisplayName", "Date Of Birth"}
-                    })
-                    @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
-                    {
-                    {"ColumnName", nameof(PersonResponse.Age)},
-                    {"DisplayName", "Age"}
-                    })
-                    @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
-                    {
-                    {"ColumnName", nameof(PersonResponse.Gender)},
-                    {"DisplayName", "Gender"}
-                    })
+            @*
+            Using The Partail View to render the column headers for the grid.
+            *@
+            @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+            {
+            {"ColumnName", nameof(PersonResponse.PersonName)},
+            {"DisplayName", "Person Name"}
+            })
+            @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+            {
+            {"ColumnName", nameof(PersonResponse.Email)},
+            {"DisplayName", "Email"}
+            })
+            @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+            {
+            {"ColumnName", nameof(PersonResponse.DateOfBirth)},
+            {"DisplayName", "Date Of Birth"}
+            })
+            @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+            {
+            {"ColumnName", nameof(PersonResponse.Age)},
+            {"DisplayName", "Age"}
+            })
+            @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+            {
+            {"ColumnName", nameof(PersonResponse.Gender)},
+            {"DisplayName", "Gender"}
+            })
 
-                    @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
-                    {
-                    {"ColumnName", nameof(PersonResponse.country)},
-                    {"DisplayName", "Country"}
-                    })
-                    @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
-                    {
-                    {"ColumnName", nameof(PersonResponse.Address)},
-                    {"DisplayName", "Address"}
-                    })
-                    @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
-                    {
-                    {"ColumnName", nameof(PersonResponse.ReceiveNewsLetter)},
-                    {"DisplayName", "Receive News Letter"}
-                    })
-                   @*
-                    The above code can be replaced with the following code without Partail View
-                    @foreach(var item in ViewBag.SearchFields)
-                    {
-                        @if (ViewBag.currentSortBy == item.Key && (ViewBag.currentSortOrder == SortOrderOptions.ASC.ToString()))
-                        {
-                            <th>
-                                <a href="~/persons/index?searchBy=@ViewBag.currentSearchBy&searchString=@ViewBag.currentSearchString&sortBy=@item.Key&sortOrder=@SortOrderOptions.DESC">
-                                    @item.Value
-                                </a>
-                                <i class="fa-solid fa-sort-up" />
-                            </th>
-                        }
-                        else if (ViewBag.currentSortBy == item.Key && (ViewBag.currentSortOrder == SortOrderOptions.DESC.ToString()))
-                        {
-                            <th>
-                                <a href="~/persons/index?searchBy=@ViewBag.currentSearchBy&searchString=@ViewBag.currentSearchString&sortBy=@item.Key&sortOrder=@SortOrderOptions.ASC">
-                                    @item.Value
-                                </a>
-                                <i class="fa-solid fa-sort-down" />
-                            </th>
-                        }
-                        else
-                        {
-                            <th>
-                                <a href="~/persons/index?searchBy=@ViewBag.currentSearchBy&searchString=@ViewBag.currentSearchString&sortBy=@item.Key&sortOrder=@SortOrderOptions.DESC">
-                                    @item.Value
-                                </a>
-                                <i class="fa-solid fa-sort-up" />
-                            </th>
-                        }
-                    }
-                    *@
-            </tr>
+            @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+            {
+            {"ColumnName", nameof(PersonResponse.country)},
+            {"DisplayName", "Country"}
+            })
+            @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+            {
+            {"ColumnName", nameof(PersonResponse.Address)},
+            {"DisplayName", "Address"}
+            })
+            @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+            {
+            {"ColumnName", nameof(PersonResponse.ReceiveNewsLetter)},
+            {"DisplayName", "Receive News Letter"}
+            })
+            @*
+            The above code can be replaced with the following code without Partail View
+            @foreach(var item in ViewBag.SearchFields)
+            {
+            @if (ViewBag.currentSortBy == item.Key && (ViewBag.currentSortOrder == SortOrderOptions.ASC.ToString()))
+            {
+            <th>
+            <a href="~/persons/index?searchBy=@ViewBag.currentSearchBy&searchString=@ViewBag.currentSearchString&sortBy=@item.Key&sortOrder=@SortOrderOptions.DESC">
+            @item.Value
+            </a>
+            <i class="fa-solid fa-sort-up" />
+            </th>
+            }
+            else if (ViewBag.currentSortBy == item.Key && (ViewBag.currentSortOrder == SortOrderOptions.DESC.ToString()))
+            {
+            <th>
+            <a href="~/persons/index?searchBy=@ViewBag.currentSearchBy&searchString=@ViewBag.currentSearchString&sortBy=@item.Key&sortOrder=@SortOrderOptions.ASC">
+            @item.Value
+            </a>
+            <i class="fa-solid fa-sort-down" />
+            </th>
+            }
+            else
+            {
+            <th>
+            <a href="~/persons/index?searchBy=@ViewBag.currentSearchBy&searchString=@ViewBag.currentSearchString&sortBy=@item.Key&sortOrder=@SortOrderOptions.DESC">
+            @item.Value
+            </a>
+            <i class="fa-solid fa-sort-up" />
+            </th>
+            }
+            }
+            *@
         </thead>
         <tbody>
             @foreach (PersonResponse person in Model)
@@ -132,11 +131,15 @@
                     <td>@person.country</td>
                     <td>@person.Address</td>
                     <td>@person.ReceiveNewsLetter</td>
-
-                        
-</tr>
-}
-</tbody>
-</table>
+                    <td><a href="@Url.Action("Edit", "Persons", new { Id = person.PersonId})">Edit</a></td>
+                    <td>
+                        <form action="~/persons/delete" method="post">
+                            <input type="hidden" name="id" value="@person.PersonId" />
+                            <button type="submit" class="button button-red-back">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
-</form>

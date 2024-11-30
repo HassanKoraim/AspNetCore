@@ -1,0 +1,125 @@
+﻿@model PersonResponse
+@{
+    ViewBag.Title = "Edit Person";
+}
+<a href="~/persons/edit" class="link-hover">Back to Persons</a>
+<h1>@ViewBag.Title</h1>
+
+<div class="w-50">
+    <form action="~/persons/edit" method="post">
+        @*Person Name*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label for="PersonName" class="form-label pt">Person Name</label>
+            </div>
+            <div class="flex-1">
+                <input type="text" id="PersonName" name="PersonName" class="form-input" value="@Model.PersonName" />
+            </div>
+        </div>
+
+        @*Email*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label for="Email" class="form-label pt">Email</label>
+            </div>
+            <div class="flex-1">
+                <input type="email" id="Email" name="Email" class="form-input" placeholder="example@gmail.com" value="@Model.Email" />
+            </div>
+        </div>
+
+        @*Date of Birth*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label for="DateOfBirth" class="form-label pt">Date Of Birth</label>
+            </div>
+            <div class="flex-1">
+                <input type="date" id="DateOfBirth" name="DateOfBirth" class="form-input" value="@Model.DateOfBirth?.ToString("yyyy-MM-dd")" />
+            </div>
+        </div>
+
+        @*Gender*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label class="form-label pt">Gender</label>
+            </div>
+            <div class="flex-1"> 
+                <input type="radio" id="Male" name="Gender" value="Male" class="ml" @(Model.Gender == "Male"? "checked" : "" ) />
+                <label for="Male">Male</label>
+
+                <input type="radio" id="Female" name="Gender" value="Female" class="ml" @(Model.Gender == "Female" ? "checked" : "") />
+                <label for="Female">Female</label>
+
+                <input type="radio" id="Other" name="Gender" value="Other" class="ml" @(Model.Gender == "Other" ? "checked" : "") />
+                <label for="Other">Other</label>
+            </div>
+        </div>
+
+        @*Country*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label class="form-label pt">Country</label>
+            </div>
+            <div class="flex-1">
+                <select name="CountryId" id="CountryId" class="form-input">
+                    <option value="">Please Select</option>
+                    @foreach (CountryResponse country in ViewBag.Countries)
+                    {
+                        if(country.CountryId == Model.CountryId)
+                        {
+                            <option value="@country.CountryId" selected>@country.CountryName</option>
+                        }
+                        else
+                        {
+                            <option value="@country.CountryId">@country.CountryName</option>
+                        }
+                       // <option value="@country.CountryId">@country.CountryName</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        @*Address*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label for="Address" class="form-label pt" >Address</label>
+            </div>
+            <div class="flex-1">
+                <textarea id="Address" name="Address" class="form-input">@Model.Address</textarea>
+            </div>
+        </div>
+
+        @*Recieve News Letters*@
+        <div class="form-field flex">
+            <div class="w-25">
+            </div>
+            <div class="flex-1">
+                <input type="checkbox" name="ReceiveNewsLetter" id="ReceiveNewsLetter" value="true" @(Model.ReceiveNewsLetter ? "checked" : "" )/>
+                <label for="ReceiveNewsLetter" class="form-label">Receive News Letter</label>
+            </div>
+        </div>
+
+        @*Submit*@
+        <div class="form-field flex">
+            <div class="w-25">
+            </div>
+            <div class="flex-1">
+                @*Hidden Field for PersonId*@
+                <input type="hidden" name="PersonId" value="@Model.PersonId" />
+                @*button *@
+                <button class="button button-green-back">Edit</button>
+
+                @if (ViewBag.Errors != null)
+                {
+                    <div class="text-red ml">
+                        <ul>
+                            @foreach (string error in ViewBag.Errors)
+                            {
+                                <li class="ml">@error</li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+        </div>
+    </form>
+</div>
