@@ -1,0 +1,56 @@
+﻿@model PersonResponse
+@{
+    ViewBag.Title = "Delete Person";
+}
+<a asp-controller="Persons" asp-action="Index" class="link-hover">Back to Persons</a>
+<h1>@ViewBag.Title</h1>
+<h3>Are you sure to delete this Person?</h3>
+<div class="w-75" >
+    <form asp-controller="Persons" asp-action="Delete" method="post">
+        @*Person Name*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="PersonName" class="form-label pt">Person Name</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="PersonName" class="form-input" disabled />
+                <span asp-validation-for="PersonName" class="text-red" style="display:block"></span>
+            </div>
+        </div>
+        @*Email*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="Email" class="form-label pt">Email</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="Email" disabled class="form-input" placeholder="example@gmail.com" />
+                <span asp-validation-for="Email" class="text-red"></span>
+            </div>
+        </div>
+        @*Submit*@
+        <div class="form-field flex">
+            <div class="w-25">
+            </div>
+            <div class="flex-1">
+                @*Hidden Field for PersonId*@
+                <input type="hidden" name="PersonId" value="@Model.PersonId" />
+                @*button *@
+                <button type="submit" class="button button-red-back">Delete</button>
+                <a asp-controller="Persons" asp-action="Index">Back To Persons List</a>
+                @* This give a summary for Validation rules after the Delete Button *@
+                <div asp-validation-summary="All"></div>
+                 @if (ViewBag.Errors != null)
+                 {
+                     <div class="text-red ml">
+                         <ul>
+                             @foreach (string error in ViewBag.Errors)
+                             {
+                                 <li class="ml">@error</li>
+                             }
+                         </ul>
+                     </div>
+                 }
+            </div>
+        </div>
+    </form>
+</div>

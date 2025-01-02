@@ -13,13 +13,16 @@ namespace ServiceConstracts.DTO
     {
         [Required(ErrorMessage = "Person Name can't be blank")]
         public string? PersonName { get; set; }
-
         [Required(ErrorMessage = "Email can't be blank")]
         [EmailAddress(ErrorMessage = "Email value should be a valid Email adrress")]
+        [DataType(DataType.EmailAddress)]
         public string? Email { get; set; }
+        [DataType(DataType.Date)]
         public DateTime? DateOfBirth { get; set; }
         public GenderOptions? Gender { get; set; }
+        [Required(ErrorMessage = "Please Select a Country")]
         public Guid? CountryId { get; set; }
+        [DataType(DataType.MultilineText)]
         public string? Address { get; set; }
         public bool ReceiveNewsLetter { get; set; }
         /// <summary>
@@ -29,9 +32,16 @@ namespace ServiceConstracts.DTO
         public Person ToPerson()
         {
             //PersonId = Guid.NewGuid() ,
-            return new Person { PersonName = PersonName, 
-                Email = Email, DateOfBirth = DateOfBirth, Gender = Gender.ToString(), 
-                CountryId = CountryId, Address = Address, ReceiveNewsLetter = ReceiveNewsLetter};
+            return new Person
+            {
+                PersonName = PersonName,
+                Email = Email,
+                DateOfBirth = DateOfBirth,
+                Gender = Gender.ToString(),
+                CountryId = CountryId,
+                Address = Address,
+                ReceiveNewsLetter = ReceiveNewsLetter
+            };
 
         }
     }

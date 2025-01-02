@@ -1,0 +1,15 @@
+E:\Coding\CSharp\AspNetCore\HarshaCourse\LINQ-Section\LINQExample\LINQExample\bin\Debug\net6.0\LINQExample.exe
+E:\Coding\CSharp\AspNetCore\HarshaCourse\LINQ-Section\LINQExample\LINQExample\bin\Debug\net6.0\LINQExample.deps.json
+E:\Coding\CSharp\AspNetCore\HarshaCourse\LINQ-Section\LINQExample\LINQExample\bin\Debug\net6.0\LINQExample.runtimeconfig.json
+E:\Coding\CSharp\AspNetCore\HarshaCourse\LINQ-Section\LINQExample\LINQExample\bin\Debug\net6.0\LINQExample.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\LINQ-Section\LINQExample\LINQExample\bin\Debug\net6.0\LINQExample.pdb
+E:\Coding\CSharp\AspNetCore\HarshaCourse\LINQ-Section\LINQExample\LINQExample\obj\Debug\net6.0\LINQExample.GeneratedMSBuildEditorConfig.editorconfig
+E:\Coding\CSharp\AspNetCore\HarshaCourse\LINQ-Section\LINQExample\LINQExample\obj\Debug\net6.0\LINQExample.AssemblyInfoInputs.cache
+E:\Coding\CSharp\AspNetCore\HarshaCourse\LINQ-Section\LINQExample\LINQExample\obj\Debug\net6.0\LINQExample.AssemblyInfo.cs
+E:\Coding\CSharp\AspNetCore\HarshaCourse\LINQ-Section\LINQExample\LINQExample\obj\Debug\net6.0\LINQExample.csproj.CoreCompileInputs.cache
+E:\Coding\CSharp\AspNetCore\HarshaCourse\LINQ-Section\LINQExample\LINQExample\obj\Debug\net6.0\LINQExample.sourcelink.json
+E:\Coding\CSharp\AspNetCore\HarshaCourse\LINQ-Section\LINQExample\LINQExample\obj\Debug\net6.0\LINQExample.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\LINQ-Section\LINQExample\LINQExample\obj\Debug\net6.0\refint\LINQExample.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\LINQ-Section\LINQExample\LINQExample\obj\Debug\net6.0\LINQExample.pdb
+E:\Coding\CSharp\AspNetCore\HarshaCourse\LINQ-Section\LINQExample\LINQExample\obj\Debug\net6.0\LINQExample.genruntimeconfig.cache
+E:\Coding\CSharp\AspNetCore\HarshaCourse\LINQ-Section\LINQExample\LINQExample\obj\Debug\net6.0\ref\LINQExample.dll

@@ -6,6 +6,7 @@ using System.Linq;
 using Entities;
 using System.Reflection;
 using System.Xml.Linq;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ServiceConstracts.DTO
 {
@@ -19,17 +20,18 @@ namespace ServiceConstracts.DTO
         [EmailAddress(ErrorMessage = "Given a Valid Email")]
         public string? Email { get; set; }
         public string? Gender { get; set; }
-        public DateTime? BirthDate { get; set; }
+        public DateTime? DateOfBirth { get; set; }
         public string? Address { get; set; }
         [Required(ErrorMessage = "Contry Id can't be blank")]
         public string? CountryId { get; set; }
-        public bool? ReciveLetter { get; set; }
-
+        public bool? ReceiveNewsLetter { get; set; }
+        public string? CountryName { get; set; }
+        public double? Age { get; set; }
         public override string ToString()
         {
             return $"Perosn Id : {PersonId}, Person Name: {PersonName}, Email: {Email}\n" +
-                $"Gender: {Gender}, CountryId: {CountryId},\n" +
-                $"BirthDay: {BirthDate}, Address: {Address}, ReciveLetter : {ReciveLetter}";
+                $"Gender: {Gender}, CountryId: {CountryId},\n" + $"Country Name: {CountryName} "+
+                $"BirthDay: {DateOfBirth}, Address: {Address}, ReciveLetter : {ReceiveNewsLetter}";
         }
         public override bool Equals(object? obj)
         {
@@ -37,9 +39,9 @@ namespace ServiceConstracts.DTO
             if(obj.GetType() != typeof(PersonResponse)) return false;
             PersonResponse objConverted = obj as PersonResponse;
             return PersonId == objConverted.PersonId && PersonName == objConverted.PersonName &&
-                Email == objConverted.Email && Gender == objConverted.Gender && BirthDate == objConverted.BirthDate 
+                Email == objConverted.Email && Gender == objConverted.Gender && DateOfBirth == objConverted.DateOfBirth 
                 && CountryId == objConverted.CountryId
-                && ReciveLetter == objConverted.ReciveLetter;
+                && ReceiveNewsLetter == objConverted.ReceiveNewsLetter;
         }
     }
     
@@ -53,11 +55,13 @@ namespace ServiceConstracts.DTO
                 PersonName = person?.PersonName,
                 Email = person?.Email,
                 CountryId = person.CountryId.ToString(),
-               // Gender = (GenderOption)Enum.Parse(typeof(GenderOption),person?.Gender,true),
+                // Gender = (GenderOption)Enum.Parse(typeof(GenderOption),person?.Gender,true),
                 Gender = person.Gender.ToString(),
-                BirthDate = person.BirthDate,
+                DateOfBirth = person.DateOfBirth,
                 Address = person.Address,
-                ReciveLetter = person.ReciveLetter
+                ReceiveNewsLetter = person.ReceiveNewsLetter,
+                Age = (person.DateOfBirth != null) ? Math.Round((DateTime.Now - person.DateOfBirth.Value).TotalDays / 365.25) : null
+            
             };
         }
     }

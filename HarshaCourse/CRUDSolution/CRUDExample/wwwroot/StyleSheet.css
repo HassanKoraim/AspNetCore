@@ -55,6 +55,7 @@
     background-color: #ececec;
 }
 
+
 .page-content {
     min-height: 90vh;
     padding: 15px 20px;
@@ -108,7 +109,9 @@
 .w-75 {
     width: 75%;
 }
-
+.e-75 {
+    width: 75%;
+}
 .w-90 {
     width: 90%;
 }

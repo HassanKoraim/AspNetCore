@@ -345,7 +345,7 @@ namespace CRUDTests
             List<PersonResponse>? personsResponse_from_get = _personsService.GetFilterdPersons(searchBy, searchString);
 
             //Assert
-            Assert.Equal(personsResponse_from_create, personsResponse_from_get);
+           Assert.Equal(personsResponse_from_create, personsResponse_from_get);
         }
 
         // if we pass PersonName to SearchBy Parameter, and Hassan to searchstring parameter,
@@ -367,7 +367,243 @@ namespace CRUDTests
             Assert.Equal(personsResponse_expected, personsResponse_from_get);
         }
 
-
         #endregion
-    }
+
+        #region GetSortedPersons
+        // if we supply null List, it should throw ArrgumentNullException
+        [Fact]
+        public void GetSortedPersons_nullList()
+        {
+            // Assert
+            Assert.Throws<ArgumentNullException>(() =>
+                   //Act
+                 _personsService.GetSortedPersons(null, "PersonName", sortOrderOption.ASC)
+            );
+        }
+
+        // if supply null value in SortyBy, it should return all List without arrangement
+        [Fact]
+        public void GetSortedPersons_NullSortBy()
+        {
+            // Arrange
+            List<PersonResponse>? personsResponse_from_Create = createPersons();
+
+            // act 
+            List<PersonResponse>? personsResponse_from_get = _personsService.GetSortedPersons(personsResponse_from_Create,null, sortOrderOption.ASC);
+            // Assert 
+            Assert.Equal(personsResponse_from_Create, personsResponse_from_get);
+        }
+
+        // if we supply null sortOrderOption, it should return list without arrangment
+        [Fact]
+        public void GetSortedPerson_nullsortOrderOption()
+        {
+            // Arrange
+            List<PersonResponse>? personsResponse_from_Create = createPersons();
+
+            // act 
+         //   List<PersonResponse>? personsResponse_OrderByPersonNamewithAsc = personsResponse_from_Create.OrderBy(person => person.PersonName).ToList();
+            List<PersonResponse>? personsResponse_from_get = _personsService.GetSortedPersons(personsResponse_from_Create, "PersonName", null);
+
+            // Assert 
+            Assert.Equal(personsResponse_from_Create, personsResponse_from_get);
+        }
+        [Fact]
+        public void GetSortedPerson_withPersonName_inAscOrder()
+        {
+            // arrange
+            List<PersonResponse> personsResponse_from_create = createPersons();
+
+            //Act
+            List<PersonResponse>? personsResponse_from_get = _personsService.GetSortedPersons(personsResponse_from_create, "PersonName", sortOrderOption.ASC);
+            List<PersonResponse>? personsResponse_Sorted = personsResponse_from_create.OrderBy(x => x.PersonName).ToList();
+
+            //Expected
+            _testOutputHelper.WriteLine("Expected");
+            foreach (PersonResponse personResponse in personsResponse_from_get)
+            {
+                _testOutputHelper.WriteLine(personResponse.ToString());
+            }
+            _testOutputHelper.WriteLine("Sorted List");
+            foreach(PersonResponse personResponse in personsResponse_Sorted)
+            {
+                _testOutputHelper.WriteLine(personResponse.ToString());
+            }
+            //Assert
+            Assert.Equal(personsResponse_Sorted, personsResponse_from_get);
+        }
+
+        [Fact]
+        public void GetSortedPerson_withPersonName_inDescOrder()
+        {
+            // arrange
+            List<PersonResponse> personsResponse_from_create = createPersons();
+
+            //Act
+            List<PersonResponse>? personsResponse_from_get = _personsService.GetSortedPersons(personsResponse_from_create, "PersonName", sortOrderOption.DESC);
+            List<PersonResponse>? personsResponse_Sorted = personsResponse_from_create.OrderByDescending(x => x.PersonName).ToList();
+
+            //Expected
+            _testOutputHelper.WriteLine("Expected");
+            foreach (PersonResponse personResponse in personsResponse_from_get)
+            {
+                _testOutputHelper.WriteLine(personResponse.ToString());
+            }
+            _testOutputHelper.WriteLine("Sorted List");
+            foreach (PersonResponse personResponse in personsResponse_Sorted)
+            {
+                _testOutputHelper.WriteLine(personResponse.ToString());
+            }
+            //Assert
+            Assert.Equal(personsResponse_Sorted, personsResponse_from_get);
+        }
+
+        [Fact]
+        public void GetSortedPerson_withCountryName_inDescOrder()
+        {
+            // arrange
+            List<PersonResponse> personsResponse_from_create = createPersons();
+
+            //Act
+            List<PersonResponse>? personsResponse_from_get = _personsService.GetSortedPersons(personsResponse_from_create, "CountryName", sortOrderOption.DESC);
+            List<PersonResponse>? personsResponse_Sorted = personsResponse_from_create.OrderByDescending(x => x.CountryName).ToList();
+
+            //Expected
+            _testOutputHelper.WriteLine("Expected");
+            foreach (PersonResponse personResponse in personsResponse_from_get)
+            {
+                _testOutputHelper.WriteLine(personResponse.ToString());
+            }
+            _testOutputHelper.WriteLine("Sorted List");
+            foreach (PersonResponse personResponse in personsResponse_Sorted)
+            {
+                _testOutputHelper.WriteLine(personResponse.ToString());
+            }
+            //Assert
+            Assert.Equal(personsResponse_Sorted, personsResponse_from_get);
+        }
+        #endregion
+
+        #region DeletePerson
+
+        // when we supply null Guid, it should throw ArgumentNullException
+        [Fact]
+        public void DeletePerson_withNullGuid()
+        {
+            //Arrange
+            Guid guid = Guid.Empty;
+
+            //Assert
+            Assert.Throws<ArgumentException>(() => 
+                //Act 
+                _personsService.DeletePerson(guid)
+            );
+
+        }
+
+        // when we supply Guid doesn't Exist in the Persons,
+        // it should throw ArgumentException with wrong message
+        [Fact]
+        public void DeletePerson_withGuidDoesntExist()
+        {
+            //Arrange
+            Guid guid = Guid.NewGuid();
+            
+            Assert.Throws<ArgumentException>(()=>
+                //Act 
+                _personsService.DeletePerson(guid)
+            );
+        }
+
+        // when we supply the proper details, it should delete the person from the _persons
+        [Fact]
+        public void DeletePerson_withProperDetails()
+        {
+            //Arrange
+            List<PersonResponse> personsReponse = createPersons();
+            Guid? guid = personsReponse.ElementAt(0).PersonId;
+
+            //Assert
+            Assert.True(
+                //Act
+                _personsService.DeletePerson(guid)
+                );
+            Assert.Throws<ArgumentException>(() => _personsService.GetPersonByPersonId(guid));
+        }
+        #endregion
+
+        #region UpdatePerson
+
+        [Fact]
+        public void UpdatePerson_withNullpersonRequest()
+        {
+            //Arrange 
+            PersonUpdateRequest? personRequest = null;
+
+            // Assert
+             Assert.Throws<ArgumentNullException>(()=> _personsService.UpdatePerson(personRequest));
+
+        }
+        [Fact]
+        public void UpdatePerson_withDoesNotExsitPerson()
+        {
+            //Arrange 
+            PersonUpdateRequest? personRequest = new PersonUpdateRequest()
+            {
+                PersonName = "AbdAllah",
+                PersonId = Guid.NewGuid(),
+                Address = "Elwakf",
+                Email = "Hasdfh@gmail.com",
+                CountryId = Guid.NewGuid()
+            };
+
+            //act
+
+            // Assert
+            Assert.Throws<ArgumentException>(() => _personsService.UpdatePerson(personRequest));
+
+        }
+        [Fact]
+        public void UpdatePerson_withProperDetails()
+        {
+            //Arrange 
+            CountryAddRequest? countryAddRequest = new CountryAddRequest()
+            {
+                CountryName = "Egypt"
+            };
+            CountryResponse? countryResponse =
+                _countriesService.AddCountry(countryAddRequest);
+            PersonAddRequest personAddRequest = new PersonAddRequest()
+            {
+                PersonName = "Hassan",
+                Email = "Hassan@gmail.com",
+                Address = "Address For Hassan",
+                BirthDate = Convert.ToDateTime("2000-7-8"),
+                CountryId = countryResponse.CountryId,
+                Gender = GenderOption.Male,
+                ReciveLetter = true
+            };
+            PersonResponse? personResponse = _personsService.AddPerson(personAddRequest);
+            PersonUpdateRequest personUpdateRequest = new PersonUpdateRequest()
+            {
+                PersonName = "AbdAllah",
+                PersonId = personResponse?.PersonId,
+                Address = "Elwakf",
+                Email = "Hasdfh@gmail.com",
+                CountryId = personAddRequest.CountryId
+            };
+
+            //Act 
+            PersonResponse? personResponse_from_update = _personsService.UpdatePerson(personUpdateRequest);
+            PersonResponse? personResponse_from_list = _personsService.GetPersonByPersonId(personUpdateRequest.PersonId);
+
+            // Assert
+            Assert.Equal(personResponse_from_list, personResponse_from_update);
+
+        }
+
+            #endregion
+
+
+        }
 }
