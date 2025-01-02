@@ -1,0 +1,116 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "ClassLibrary1/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.0",
+        "compile": {
+          "bin/placeholder/ClassLibrary1.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ClassLibrary1.dll": {}
+        }
+      },
+      "ManyToOneRelation/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/ManyToOneRelation.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ManyToOneRelation.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ClassLibrary1/1.0.0": {
+      "type": "project",
+      "path": "../ClassLibrary1/ClassLibrary1.csproj",
+      "msbuildProject": "../ClassLibrary1/ClassLibrary1.csproj"
+    },
+    "ManyToOneRelation/1.0.0": {
+      "type": "project",
+      "path": "../ManyToOneRelation/ManyToOneRelation.csproj",
+      "msbuildProject": "../ManyToOneRelation/ManyToOneRelation.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "ClassLibrary1 >= 1.0.0",
+      "ManyToOneRelation >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\start\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\OneToOneExample\\ConsoleApp1\\OneToOneExample.csproj",
+      "projectName": "OneToOneExample",
+      "projectPath": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\OneToOneExample\\ConsoleApp1\\OneToOneExample.csproj",
+      "packagesPath": "C:\\Users\\start\\.nuget\\packages\\",
+      "outputPath": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\OneToOneExample\\ConsoleApp1\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\start\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\OneToOneExample\\ClassLibrary1\\ClassLibrary1.csproj": {
+              "projectPath": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\OneToOneExample\\ClassLibrary1\\ClassLibrary1.csproj"
+            },
+            "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\OneToOneExample\\ManyToOneRelation\\ManyToOneRelation.csproj": {
+              "projectPath": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\OneToOneExample\\ManyToOneRelation\\ManyToOneRelation.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

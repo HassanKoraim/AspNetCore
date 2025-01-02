@@ -259,14 +259,15 @@ Kessia,kcomar9@google.nl,1990-10-21,Female,020 Florence Park,false
             // if we supply PersonId is invalid, it should throw ArgumentException
             */
 
-                //Validation
-                ValidationHelper.ModelValidation(updatePersonRequest);
+            //Validation
+            ValidationHelper.ModelValidation(updatePersonRequest);
             // Get matching Person object to UpdatePersonRequest
              Person? matchingPerson = _persons.FirstOrDefault(temp => temp.PersonId == updatePersonRequest.PersonId);
             if (matchingPerson == null) throw new ArgumentException("Given Person Id Not exist");
             //Update all
             matchingPerson.PersonName = updatePersonRequest.PersonName;
             matchingPerson.Email = updatePersonRequest.Email;
+            matchingPerson.DateOfBirth = updatePersonRequest.DateOfBirth;
             matchingPerson.Address = updatePersonRequest.Address;
             matchingPerson.CountryId = updatePersonRequest.CountryId;
             matchingPerson.Gender = updatePersonRequest.Gender.ToString();

@@ -10,9 +10,9 @@ namespace ServiceConstracts
         PersonResponse? AddPerson(PersonAddRequest? personAddRequest);
         PersonResponse? GetPersonByPersonId(Guid? personId);
         List<PersonResponse>? GetAllPersons();
-        List<PersonResponse> GetFilterdPersons(string? searchBy, string? searchString);
-        List<PersonResponse> GetSortedPersons(List<PersonResponse> allpersons , string? sortBy, sortOrderOption? sortOrder);
-        PersonResponse UpdatePerson(Guid? personId);
+        List<PersonResponse>? GetFilterdPersons(string? searchBy, string? searchString);
+        List<PersonResponse> GetSortedPersons(List<PersonResponse>? allpersons , string? sortBy, sortOrderOption? sortOrder);
+        PersonResponse? UpdatePerson(PersonUpdateRequest? personRequest);
         bool DeletePerson(Guid? personId);
     }
 }

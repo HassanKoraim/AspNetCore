@@ -1,0 +1,12 @@
+E:\Coding\CSharp\AspNetCore\HarshaCourse\OneToOneExample\ClassLibrary1\bin\Debug\net6.0\ClassLibrary1.deps.json
+E:\Coding\CSharp\AspNetCore\HarshaCourse\OneToOneExample\ClassLibrary1\bin\Debug\net6.0\ClassLibrary1.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\OneToOneExample\ClassLibrary1\bin\Debug\net6.0\ClassLibrary1.pdb
+E:\Coding\CSharp\AspNetCore\HarshaCourse\OneToOneExample\ClassLibrary1\obj\Debug\net6.0\ClassLibrary1.GeneratedMSBuildEditorConfig.editorconfig
+E:\Coding\CSharp\AspNetCore\HarshaCourse\OneToOneExample\ClassLibrary1\obj\Debug\net6.0\ClassLibrary1.AssemblyInfoInputs.cache
+E:\Coding\CSharp\AspNetCore\HarshaCourse\OneToOneExample\ClassLibrary1\obj\Debug\net6.0\ClassLibrary1.AssemblyInfo.cs
+E:\Coding\CSharp\AspNetCore\HarshaCourse\OneToOneExample\ClassLibrary1\obj\Debug\net6.0\ClassLibrary1.csproj.CoreCompileInputs.cache
+E:\Coding\CSharp\AspNetCore\HarshaCourse\OneToOneExample\ClassLibrary1\obj\Debug\net6.0\ClassLibrary1.sourcelink.json
+E:\Coding\CSharp\AspNetCore\HarshaCourse\OneToOneExample\ClassLibrary1\obj\Debug\net6.0\ClassLibrary1.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\OneToOneExample\ClassLibrary1\obj\Debug\net6.0\refint\ClassLibrary1.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\OneToOneExample\ClassLibrary1\obj\Debug\net6.0\ClassLibrary1.pdb
+E:\Coding\CSharp\AspNetCore\HarshaCourse\OneToOneExample\ClassLibrary1\obj\Debug\net6.0\ref\ClassLibrary1.dll

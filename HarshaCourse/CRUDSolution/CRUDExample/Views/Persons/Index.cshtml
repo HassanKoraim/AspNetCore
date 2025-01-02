@@ -7,7 +7,7 @@
 }
 <h1>@ViewBag.Title</h1>
 <a href="~/persons/create">Create New Person</a>
-<form action="~/persons/index" method="get">
+<form asp-controller="Persons" asp-action ="Index" method="get">
     <div class="box flex">
         <div class="flex-1">
             <select class="form-input" name="searchBy">
@@ -131,12 +131,13 @@
                     <td>@person.country</td>
                     <td>@person.Address</td>
                     <td>@person.ReceiveNewsLetter</td>
-                    <td><a href="@Url.Action("Edit", "Persons", new { Id = person.PersonId})">Edit</a></td>
+                    @*/Persons/Edit/1*@
+                    <td><a asp-controller="Persons" asp-action="Edit" asp-route-PersonID="@person.PersonId" class="button button-green-back">Edit</a></td>
                     <td>
-                        <form action="~/persons/delete" method="post">
-                            <input type="hidden" name="id" value="@person.PersonId" />
+                        <a asp-controller="Persons" asp-action="Delete" asp-route-PersonId="@person.PersonId" class="button-red-back button">Delete</a>
+                       @*  <form action="~/persons/delete" method="post">
                             <button type="submit" class="button button-red-back">Delete</button>
-                        </form>
+                        </form> *@
                     </td>
                 </tr>
             }

@@ -1,91 +1,101 @@
-﻿@{
+﻿@model PersonAddRequest
+@{
     ViewBag.Title = "Create Person";
 }
 <a href="~/persons/index" class="link-hover">Back to Persons</a>
 <h1>@ViewBag.Title</h1>
- 
-<div class="w-50">
-<form action="~/persons/create" method="post">
-    @*Person Name*@
-    <div class="form-field flex">
-        <div class="w-25">
-            <label for="PersonName" class="form-label pt">Person Name</label>
-        </div>
-        <div class="flex-1">
-            <input type="text" id="PersonName" name="PersonName" class="form-input"/>
-        </div>
-    </div>
 
-    @*Email*@
-    <div class="form-field flex">
-        <div class="w-25">
-            <label for="Email" class="form-label pt">Email</label>
+<div class= "w-75">
+    <form asp-controller="Persons" asp-action="Create" method="post">
+        @*Person Name*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="PersonName" class="form-label pt">Person Name</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="PersonName" class="form-input" />
+                <span asp-validation-for="PersonName" class="text-red" style="display:block"></span>
+                @*<input type="text" id="PersonName" name="PersonName" class="form-input"/>*@
+            </div>
         </div>
-        <div class="flex-1">
-            <input type="email" id="Email" name="Email" class="form-input" placeholder="example@gmail.com" />
-        </div>
-    </div>
 
-    @*Date of Birth*@
-    <div class="form-field flex">
-        <div class="w-25">
-                <label for="DateOfBirth" class="form-label pt">Date Of Birth</label>
+        @*Email*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="Email" class="form-label pt">Email</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="Email" class="form-input" placeholder="example@gmail.com" />
+                 @* Adding validation on the browser *@
+                <span asp-validation-for="Email" class="text-red" style="display:block"></span>
+            </div>
+            @*      <input type="email" id="Email" name="Email" class="form-input" placeholder="example@gmail.com" />*@
         </div>
-        <div class="flex-1">
-                <input type="date" id="DateOfBirth" name="DateOfBirth" class="form-input" />
-        </div>
-    </div>
 
-    @*Gender*@
-    <div class="form-field flex">
-        <div class="w-25">
+        @*Date of Birth*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="DateOfBirth" class="form-label pt">Date Of Birth</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="DateOfBirth" class="form-input" />
+                <span asp-validation-for="DateOfBirth" class="text-red"></span>
+                @* <input type="date" id="DateOfBirth" name="DateOfBirth" class="form-input" /> *@
+            </div>
+        </div>
+
+        @*Gender*@
+        <div class="form-field flex">
+            <div class="w-25">
                 <label class="form-label pt">Gender</label>
-        </div>
-        <div class="flex-1">
-            <input type="radio" id="Male" name="Gender" value="Male" class="ml" />
-            <label for="Male">Male</label>
-
-            <input type="radio" id="Female" name="Gender" value="Female" class="ml" />
-            <label for="Female">Female</label>
-
-            <input type="radio" id="Other" name="Gender" value="Other" class="ml" />
-            <label for="Other">Other</label>
-        </div>
-     </div>
-
-    @*Country*@
-    <div class="form-field flex">
-        <div class="w-25">
-            <label class="form-label pt">Country</label>
-        </div>
-        <div class="flex-1">
-            <select name="CountryId" id="CountryId" class="form-input">
-                <option value="">Please Select</option>
-                @foreach(CountryResponse country in ViewBag.Countries)
-                {
-                    <option value="@country.CountryId">@country.CountryName</option>
+            </div>
+            <div class="flex-1">
+                @{
+                    string[] genders = (string[])Enum.GetNames(typeof(GenderOptions));
+                    foreach (string gender in genders)
+                    {
+                        <input type="radio" asp-for="Gender" value="@gender" id="@gender" class="ml" />
+                        <label for="@gender">@gender</label>
+                    }
+                    <span asp-validation-for="Gender" class="text-red"></span>
                 }
-            </select>
+            </div>
         </div>
-    </div>
 
-    @*Address*@
-    <div class="form-field flex">
-        <div class="w-25">
-                <label for="Address" class="form-label pt">Address</label>
+        @*Country*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label class="form-label pt">Country</label>
+            </div>
+            <div class="flex-1">
+                <select asp-for="CountryId" asp-items=@ViewBag.Countries class="form-input">
+                    <option value="">Please Select</option>
+                </select>
+                <span asp-validation-for="CountryId" class="text-red"></span>
+            </div>
         </div>
-        <div class="flex-1">
-                <textarea id="Address" name="Address" class="form-input"></textarea>
+
+        @*Address*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="Address" class="form-label pt">Address</label>
+            </div>
+            <div class="flex-1">
+                <textarea asp-for="Address" class="form-input"></textarea>
+                <span asp-validation-for="Address" class="text-red"></span>
+                @* <textarea id="Address" name="Address" class="form-input"></textarea> *@
+            </div>
         </div>
-    </div>
 
         @*Recieve News Letters*@
         <div class="form-field flex">
             <div class="w-25">
             </div>
             <div class="flex-1">
-                <input type="checkbox" name="ReceiveNewsLetter" id="ReceiveNewsLetter" value="true" />
-                <label for="ReceiveNewsLetter" class="form-label">Receive News Letter</label>
+                <input asp-for="ReceiveNewsLetter" />
+                @* <input type="checkbox" name="ReceiveNewsLetter" id="ReceiveNewsLetter" value="true" /> *@
+                <label asp-for="ReceiveNewsLetter" class="form-label">Receive News Letter</label>
+                <span asp-validation-for="ReceiveNewsLetter" class="text-red"></span>
             </div>
         </div>
 
@@ -94,21 +104,34 @@
             <div class="w-25">
             </div>
             <div class="flex-1">
-              <button class="button button-green-back">Create</button>
-
-              @if(ViewBag.Errors != null)
-              {
-                  <div class="text-red ml"> 
-                      <ul>
-                          @foreach(string error in ViewBag.Errors)
+                <button class="button button-green-back">Create</button>
+                @* This give a summary for Validation rules after the Create Button *@
+                <div asp-validation-summary="All"></div>
+               @* We don't need it now, after we using Helper tags and validation on the browser side by Jquery libraries *@
+               @*  @if (ViewBag.Errors != null)
+                {
+                    <div class="text-red ml">
+                        <ul>
+                            @foreach (string error in ViewBag.Errors)
                             {
                                 <li class="ml">@error</li>
                             }
-                      </ul>
-                  </div>
-                 
-              }
+                        </ul>
+                    </div>
+                }
+                *@
             </div>
         </div>
-</form>
+    </form>
 </div>
+
+ @*checking the validation rules on the browser side itself before making a request
+  * see this in the cdnjs website for the jquery and jquery.validate and jqyery-validation-unobtrusive libraries
+ *@
+@section scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" asp-fallback-test="window.jQuery" asp-fallback-src="~/jquery.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.4/jquery.validate.min.js" asp-fallback-test="window.jQuery.validator" asp-fallback-src="~/jquery.validate.min.js"
+            integrity="sha512-FOhq9HThdn7ltbK8abmGn60A/EMtEzIzv1rvuh+DqzJtSGq8BRdEN0U+j0iKEIffiw/yEtVuladk6rsG4X6Uqg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" asp-fallback-test="window.jQuery.validator.unobtrusive" asp-fallback-src="~/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+}

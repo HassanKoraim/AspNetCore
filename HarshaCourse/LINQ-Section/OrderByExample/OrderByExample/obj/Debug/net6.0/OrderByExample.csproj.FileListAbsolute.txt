@@ -1,0 +1,5 @@
+E:\Coding\CSharp\AspNetCore\HarshaCourse\LINQ-Section\OrderByExample\OrderByExample\obj\Debug\net6.0\OrderByExample.GeneratedMSBuildEditorConfig.editorconfig
+E:\Coding\CSharp\AspNetCore\HarshaCourse\LINQ-Section\OrderByExample\OrderByExample\obj\Debug\net6.0\OrderByExample.AssemblyInfoInputs.cache
+E:\Coding\CSharp\AspNetCore\HarshaCourse\LINQ-Section\OrderByExample\OrderByExample\obj\Debug\net6.0\OrderByExample.AssemblyInfo.cs
+E:\Coding\CSharp\AspNetCore\HarshaCourse\LINQ-Section\OrderByExample\OrderByExample\obj\Debug\net6.0\OrderByExample.csproj.CoreCompileInputs.cache
+E:\Coding\CSharp\AspNetCore\HarshaCourse\LINQ-Section\OrderByExample\OrderByExample\obj\Debug\net6.0\OrderByExample.sourcelink.json

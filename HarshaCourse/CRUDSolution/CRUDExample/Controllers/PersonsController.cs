@@ -5,9 +5,11 @@ using ServiceConstracts.DTO;
 using ServiceConstracts.Enums;
 using System.Collections.Generic;
 using Entities;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CRUDExample.Controllers
 {
+    [Route("[controller]")]
     public class PersonsController : Controller
     {
         // private fields
@@ -18,9 +20,9 @@ namespace CRUDExample.Controllers
             _personsService = personsService;
             _countriesService = countriesService;
         }
-        [Route("persons/index")]
+        [Route("[action]")]
         [Route("/")]
-        public IActionResult Index (string searchBy, string? searchString, string? sortBy = nameof(PersonResponse.PersonName), SortOrderOptions sortOrder = SortOrderOptions.ASC)
+        public IActionResult Index(string searchBy, string? searchString, string? sortBy = nameof(PersonResponse.PersonName), SortOrderOptions sortOrder = SortOrderOptions.ASC)
         {
             //Search
             ViewBag.SearchFields = new Dictionary<string, string>()
@@ -34,70 +36,106 @@ namespace CRUDExample.Controllers
                 {nameof(PersonResponse.Address), "Address" },
                 {nameof(PersonResponse.ReceiveNewsLetter), "Receive News Letter" },
             };
-            List<PersonResponse> AllPersons = _personsService.GetFilteredPersons(searchBy,searchString);
+            List<PersonResponse> AllPersons = _personsService.GetFilteredPersons(searchBy, searchString);
             ViewBag.currentSearchBy = searchBy;
             ViewBag.currentSearchString = searchString;
 
             //Sort
-            List <PersonResponse> SortedPersons = _personsService.GetSortedPersons(AllPersons, sortBy, sortOrder);
+            List<PersonResponse> SortedPersons = _personsService.GetSortedPersons(AllPersons, sortBy, sortOrder);
             ViewBag.currentSortBy = sortBy;
             ViewBag.currentSortOrder = sortOrder.ToString();
             return View(SortedPersons);
         }
 
         // Excutes when the users clicks on "Create Person" hyperlink (while openning the create view)     
-        [Route("persons/create")]
+        [Route("[action]")]
         [HttpGet]
         public IActionResult Create()
         {
             List<CountryResponse> countries = _countriesService.GetAllCountries();
-            ViewBag.Countries = countries;
+            ViewBag.Countries = countries.Select(temp =>
+                new SelectListItem() { Text = temp.CountryName, Value = temp.CountryId.ToString() }
+            );
+            // new SelectListItem { Text = "Hassan", Value = "1" };
+            // <option value = 1> Hassan <option/>
             return View();
         }
 
-        [Route("persons/create")]
+        [Route("[action]")]
         [HttpPost]
-        public IActionResult Create(PersonAddRequest personAddRequest)
+        public IActionResult Create([FromForm] PersonAddRequest personAddRequest)
         {
-            if (!ModelState.IsValid) 
+            // this is before I use Helper tags and Jquery Validation 
+            /*if (!ModelState.IsValid)
             {
                 List<CountryResponse> countries = _countriesService.GetAllCountries();
-                ViewBag.Countries = countries;
-
+                ViewBag.Countries = countries.Select(temp =>
+                                new SelectListItem() { Text = temp.CountryName, Value = temp.CountryId.ToString() }
+                            );
                 ViewBag.Errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
                 return View();
-            }
+            }*/
+
             // call the service method
             PersonResponse personResponse = _personsService.AddPerson(personAddRequest);
             // navigate to Index() action method (it makes another get request to "persons/index")   
-            return RedirectToAction("Index","Persons");
+            return RedirectToAction("Index", "Persons");
         }
 
-        [Route("persons/edit")]
+        [Route("[action]/{PersonID}")]
         [HttpGet]
-        public IActionResult Edit(Guid id)
+        public IActionResult Edit(Guid PersonID)
         {
+            PersonResponse? personResponse = _personsService.GetPersonByPersonId(PersonID);
+            if(personResponse == null)
+            {
+                return RedirectToAction("Index");
+            }
+            PersonUpdateRequest? personUpdateRequest = personResponse?.ToPersonUpdateRequest();
             List<CountryResponse> countries = _countriesService.GetAllCountries();
-            ViewBag.Countries = countries;
-            PersonResponse? personResponse = _personsService.GetPersonByPersonId(id);
-            return View(personResponse);
+            ViewBag.Countries = countries.Select(temp =>
+                new SelectListItem() { Text = temp.CountryName, Value = temp.CountryId.ToString() }
+            );
+            // new SelectListItem { Text = "Hassan", Value = "1" };
+            // <option value = 1> Hassan <option/>
+            return View(personUpdateRequest);
         }
 
-        [Route("persons/edit")]
+        [Route("[action]/{personID}")]
         [HttpPost]
         public IActionResult Edit(PersonUpdateRequest personUpdateRequest)
         {
+            if (personUpdateRequest == null)
+            {
+                return RedirectToAction("Index");
+            }
             _personsService.UpdatePerson(personUpdateRequest);
-            return RedirectToAction("Index","Persons");
+            return RedirectToAction("Index", "Persons");
         }
 
-        [Route("persons/delete")]
+        [Route("[action]/{PersonId}")]
+        [HttpGet]
+        public IActionResult Delete(Guid personId) 
+        {
+            PersonResponse? personResponse = _personsService.GetPersonByPersonId(personId);
+            if(personResponse == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(personResponse);
+        }
+
+        [Route("[action]/{PersonId}")]
         [HttpPost]
-        public IActionResult Delete(Guid id)
-        { 
+        public IActionResult Delete(PersonUpdateRequest personUpdateRequest)
+        {
+            PersonResponse? personResponse = 
+                _personsService.GetPersonByPersonId(personUpdateRequest.PersonId);
+            if(personResponse == null)
+                return RedirectToAction("Index");
             // call Delete method on service
-            _personsService.DeletePerson(id);
-            return RedirectToAction("Index","Persons");
+            _personsService.DeletePerson(personUpdateRequest.PersonId);
+            return RedirectToAction("Index", "Persons");
         }
 
     }

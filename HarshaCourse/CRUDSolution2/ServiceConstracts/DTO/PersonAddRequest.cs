@@ -29,10 +29,10 @@ namespace ServiceConstracts.DTO
                 PersonName = PersonName,
                 Email = Email,
                 Gender = Gender.ToString(),
-                BirthDate = BirthDate,
+                DateOfBirth = BirthDate,
                 Address = Address,
                 CountryId = CountryId,
-                ReciveLetter = ReciveLetter
+                ReceiveNewsLetter = ReciveLetter
             };
         }
     }
