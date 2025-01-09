@@ -58,5 +58,10 @@ namespace Entities
             return Database.ExecuteSqlRaw("EXECUTE [dbo].[InsertPerson] @PersonId, @PersonName," +
                 " @Email, @DateOfBirth, @Gender, @CountryId, @Address, @ReceiveNewsLetter", parameters);
         }
+        public int sp_DeletePerson(Guid? PersonId)
+        {
+            SqlParameter parameter = new SqlParameter("@PersonId",PersonId);
+            return Database.ExecuteSqlRaw("EXECUTE [dbo].[DeletePerson] @PersonId", parameter);
+        }
     }
 }

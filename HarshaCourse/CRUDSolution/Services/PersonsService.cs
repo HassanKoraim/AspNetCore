@@ -221,9 +221,10 @@ namespace Services
             if(personId == null) throw new ArgumentNullException();
 
             Person? matchingPerson = _db.Persons.FirstOrDefault(temp => temp.PersonId == personId);
-            if (matchingPerson == null)  return false;   
-            _db.Persons.Remove(_db.Persons.First(temp => temp.PersonId == personId));
-            _db.SaveChanges(); //DELETE 
+            if (matchingPerson == null)  return false;
+            /*_db.Persons.Remove(_db.Persons.First(temp => temp.PersonId == personId));
+            _db.SaveChanges(); //DELETE */
+            _db.sp_DeletePerson(personId);
             return true;
 
         }
