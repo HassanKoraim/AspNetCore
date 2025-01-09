@@ -10,3 +10,4 @@ E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\Entities\obj\Debug\net6.0\
 E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\Entities\obj\Debug\net6.0\refint\Entities.dll
 E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\Entities\obj\Debug\net6.0\Entities.pdb
 E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\Entities\obj\Debug\net6.0\ref\Entities.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\Entities\obj\Debug\net6.0\Entities.csproj.AssemblyReference.cache

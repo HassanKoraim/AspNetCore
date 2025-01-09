@@ -10,77 +10,12 @@ namespace Services
 {
     public class PersonsService : IPersonsService
     {
-        private readonly List<Person> _persons;
+        private readonly PersonsDbContext _db;
         private readonly ICountriesService _countriesService;
-        public PersonsService(bool initialize = true)
+        public PersonsService(PersonsDbContext personsDbContext , ICountriesService countriesService)
         {
-            _persons = new List<Person>();
-            _countriesService = new CountriesService();
-            if (initialize)
-            {
-                _persons.Add(new Person() { PersonId = Guid.Parse("E81E31EA-D85B-4F00-B794-DD8B1B720F4D"),
-                    PersonName = "Sandi", Email = "smilmoe0@abc.net.au", DateOfBirth = DateTime.Parse("1995-03-03"),
-                    Gender = "Female", Address = "2696 Elka Pass",
-                    ReceiveNewsLetter = true, CountryId = Guid.Parse("A81AD7BA-96B6-40F8-817B-1FB7AA02B89F")
-                });
-                _persons.Add(new Person()
-                {
-                    PersonId = Guid.Parse("2FB64DD1-7104-4D13-9D9F-EC8456782CD3"),
-                    PersonName = "Darn",
-                    Email = "dlevensky1@indiegogo.com",
-                    DateOfBirth = DateTime.Parse("1992-08-24"),
-                    Gender = "Male",
-                    Address = "89 Loftsgordon Street",
-                    ReceiveNewsLetter = false,
-                    CountryId = Guid.Parse("C01A78A7-98CE-41C1-8D52-B4279120F9EF")
-                });
-                _persons.Add(new Person() { PersonId = Guid.Parse("0E3327DB-0270-45E3-B12D-87264BA72A82"),
-                    PersonName = "Angil", Email = "athurborn2@hugedomains.com", DateOfBirth = DateTime.Parse("1999-04-04"),
-                    Gender = "Female", Address = "46 Prairie Rose Avenue",
-                    ReceiveNewsLetter = false, CountryId = Guid.Parse("A81AD7BA-96B6-40F8-817B-1FB7AA02B89F")
-                });
-                _persons.Add(new Person()
-                {
-                    PersonId = Guid.Parse("CD8B716F-F3A9-444B-8E0C-F91753D0A6BC"),
-                    PersonName = "Amandie",
-                    Email = "aramsden3@networkadvertising.org",
-                    DateOfBirth = DateTime.Parse("2000-04-27"),
-                    Gender = "Female",
-                    Address = "9440 Summit Street",
-                    ReceiveNewsLetter = false,
-                    CountryId = Guid.Parse("8E9D4111-1C27-41E0-AAFB-360A11887FBC")
-                });
-                _persons.Add(new Person()
-                {
-                    PersonId = Guid.Parse("F652A57F-CEC0-4EDA-A46D-AEB2DD7732FB"),
-                    PersonName = "Rusty",
-                    Email = "rmilthorpe4@vimeo.com",
-                    DateOfBirth = DateTime.Parse("2000-05-10"),
-                    Gender = "Male",
-                    Address = "2588 Lighthouse Bay Court",
-                    ReceiveNewsLetter = true,
-                    CountryId = Guid.Parse("A4E6C7A2-8306-4116-B9FA-3791CC2B0529")
-                });
-                _persons.Add(new Person()
-                {
-                    PersonId = Guid.Parse("EB61B0C0-EF3E-4401-930C-5A8EDBC54738"),
-                    PersonName = "Portia",
-                    Email = "ppitkin5@posterous.com",
-                    DateOfBirth = DateTime.Parse("1999-09-18"),
-                    Gender = "Female",
-                    Address = "2 Hoepker Parkway",
-                    ReceiveNewsLetter = true,
-                    CountryId = Guid.Parse("7099A3F2-9820-4EC0-BCF5-ECB968BD516F")
-                });
-                // {
-                /*
-,,,,,true
-Sebastian,sgoldston6@wikia.com,1991-10-20,Male,0 Chive Crossing,false
-Amandie,amccullough7@comsenz.com,1995-03-01,Female,73533 Fuller Park,true
-Ainslie,acareless8@rakuten.co.jp,2000-12-10,Female,017 Granby Junction,false
-Kessia,kcomar9@google.nl,1990-10-21,Female,020 Florence Park,false
-                */
-            }
+            _db = personsDbContext;
+            _countriesService = countriesService;
         }
         private PersonResponse? ConvertPersonIntoPersonResponse(Person? person)
         {
@@ -96,7 +31,7 @@ Kessia,kcomar9@google.nl,1990-10-21,Female,020 Florence Park,false
             //Model Validations 
             ValidationHelper.ModelValidation(personAddRequest);
             //Validate: if Perosn Name is already exists
-            if(_persons.Where(temp => temp.PersonName == personAddRequest.PersonName).Count() > 0)
+            if(_db.Persons.Where(temp => temp.PersonName == personAddRequest.PersonName).Count() > 0)
             {
                 throw new ArgumentException("Given Person Name is already exists");
             }
@@ -105,22 +40,26 @@ Kessia,kcomar9@google.nl,1990-10-21,Female,020 Florence Park,false
             // generate PersonId 
             person.PersonId = Guid.NewGuid();
             // Add to _Persons List
-            _persons.Add(person);
+          /*  _db.Persons.Add(person);
+            _db.SaveChanges. */
+          _db.sp_InsertPerson(person);
+
             return ConvertPersonIntoPersonResponse(person);     
         }
         /// <summary>
         /// Returns All Persons
         /// </summary>
         /// <returns>Returns a list of objects of PersonResponse Type</returns>
-        public List<PersonResponse>? GetAllPersons()
+        public List<PersonResponse> GetAllPersons()
         {
-            return _persons?.Select(temp => ConvertPersonIntoPersonResponse(temp)).ToList();
+            /*          return _db.Persons.ToList().Select(temp => ConvertPersonIntoPersonResponse(temp)).ToList();*/
+            return _db.sp_GetAllPersons().Select(temp => ConvertPersonIntoPersonResponse(temp)).ToList();
         }
-
+        
         public PersonResponse? GetPersonByPersonId(Guid? personId)
         {
             if (personId == null) return null;
-            Person? person = _persons.FirstOrDefault(temp => temp.PersonId == personId);
+            Person? person = _db.Persons.FirstOrDefault(temp => temp.PersonId == personId);
             if (person == null) return null;
             PersonResponse? personResponse = ConvertPersonIntoPersonResponse(person);
             return personResponse;
@@ -262,7 +201,7 @@ Kessia,kcomar9@google.nl,1990-10-21,Female,020 Florence Park,false
             //Validation
             ValidationHelper.ModelValidation(updatePersonRequest);
             // Get matching Person object to UpdatePersonRequest
-             Person? matchingPerson = _persons.FirstOrDefault(temp => temp.PersonId == updatePersonRequest.PersonId);
+             Person? matchingPerson = _db.Persons.FirstOrDefault(temp => temp.PersonId == updatePersonRequest.PersonId);
             if (matchingPerson == null) throw new ArgumentException("Given Person Id Not exist");
             //Update all
             matchingPerson.PersonName = updatePersonRequest.PersonName;
@@ -272,6 +211,7 @@ Kessia,kcomar9@google.nl,1990-10-21,Female,020 Florence Park,false
             matchingPerson.CountryId = updatePersonRequest.CountryId;
             matchingPerson.Gender = updatePersonRequest.Gender.ToString();
             matchingPerson.ReceiveNewsLetter = updatePersonRequest.ReceiveNewsLetter;
+            _db.SaveChanges(); //UPDATE
             return matchingPerson.ToPersonResponse();
         }
 
@@ -280,10 +220,10 @@ Kessia,kcomar9@google.nl,1990-10-21,Female,020 Florence Park,false
 
             if(personId == null) throw new ArgumentNullException();
 
-            Person? matchingPerson = _persons.FirstOrDefault(temp => temp.PersonId == personId);
-            if (matchingPerson == null)  return false;
-
-            _persons.RemoveAll(temp => temp.PersonId == personId);
+            Person? matchingPerson = _db.Persons.FirstOrDefault(temp => temp.PersonId == personId);
+            if (matchingPerson == null)  return false;   
+            _db.Persons.Remove(_db.Persons.First(temp => temp.PersonId == personId));
+            _db.SaveChanges(); //DELETE 
             return true;
 
         }

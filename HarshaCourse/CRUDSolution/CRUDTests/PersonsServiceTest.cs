@@ -5,6 +5,7 @@ using ServiceConstracts.Enums;
 using Entities;
 using Xunit.Abstractions;
 using Xunit.Sdk;
+using Microsoft.EntityFrameworkCore;
 
 namespace CRUDTests
 {
@@ -17,8 +18,8 @@ namespace CRUDTests
         //Constructor
         public PersonsServiceTest(ITestOutputHelper testOutputHelper)
         {
-            _personsService = new PersonsService();
-            _countriesService = new CountriesService(false);
+            _countriesService = new CountriesService(new PersonsDbContext(new DbContextOptionsBuilder<PersonsDbContext>().Options));
+            _personsService = new PersonsService(new PersonsDbContext(new DbContextOptionsBuilder<PersonsDbContext>().Options),_countriesService);
             _testOutputHelper = testOutputHelper;
         }
         #region AddPerson
@@ -78,7 +79,7 @@ namespace CRUDTests
             //Arrange 
             PersonAddRequest? personAddRequest = new PersonAddRequest {
                 PersonName = "Hassan", Email = "HassanKoraim2@gmail.com", Address = "Elwakf",
-                Gender = GenderOptions.male, ReceiveNewsLetter = true };
+                Gender = GenderOptions.Male, ReceiveNewsLetter = true };
 
             //Act
             PersonResponse personResponse = _personsService.AddPerson(personAddRequest);
@@ -130,7 +131,7 @@ namespace CRUDTests
                 PersonName = "Hassan",
                 Email = "HassanKoriam2@gmail.com",
                 DateOfBirth = Convert.ToDateTime("8-7-2000"),
-                Gender = GenderOptions.male,
+                Gender = GenderOptions.Male,
                 Address = "Elwakf",
                 ReceiveNewsLetter = true,
                 CountryId = countryResponse.CountryId
@@ -215,7 +216,7 @@ namespace CRUDTests
                 Address = "Address for hassan",
                 // CountryId = countryResponse1.CountryId,
                 CountryId = countriesResponse_list[0].CountryId,
-                Gender = GenderOptions.male,
+                Gender = GenderOptions.Male,
                 DateOfBirth = DateTime.Parse("8-7-2000"),
                 ReceiveNewsLetter = true,
             };
@@ -228,7 +229,7 @@ namespace CRUDTests
                 Address = "Address for Hussien",
                 //   CountryId = countryResponse2.CountryId,
                 CountryId = countriesResponse_list[1].CountryId,
-                Gender = GenderOptions.male,
+                Gender = GenderOptions.Male,
                 DateOfBirth = DateTime.Parse("1-1-1990"),
                 ReceiveNewsLetter = false,
             };
@@ -239,7 +240,7 @@ namespace CRUDTests
                 Address = "Address for Fatma",
                 //CountryId = countryResponse2.CountryId,
                 CountryId = countriesResponse_list[1].CountryId,
-                Gender = GenderOptions.female,
+                Gender = GenderOptions.Female,
                 DateOfBirth = DateTime.Parse("2005-5-8"),
                 ReceiveNewsLetter = false,
             };
@@ -394,7 +395,7 @@ namespace CRUDTests
         public void UpdatePersonName_NullPersonUpdateRequest()
         {
             //Arrange
-            PersonUpdateRequest personUpdateRequest = null;
+            PersonUpdateRequest? personUpdateRequest = null;
 
             //Assert
             Assert.Throws<ArgumentNullException>(() =>
