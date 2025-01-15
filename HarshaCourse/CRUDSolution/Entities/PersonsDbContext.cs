@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
 using System;
 using System.Collections.Generic;
 
@@ -36,6 +37,12 @@ namespace Entities
             foreach (var person in persons)
                 modelBuilder.Entity<Person>().HasData(person);
 
+            //Fluent API
+            modelBuilder.Entity<Person>().Property(temp => temp.TIN)
+                .HasColumnName("TaxIdentificationNumber")
+                .HasColumnType("varchar(8)")
+                .HasDefaultValue("ABC12345");
+            modelBuilder.Entity<Person>().HasCheckConstraint("CHK_TIN", "len([TaxIdentificationSNumber]) = 8");
         }
         public List<Person> sp_GetAllPersons()
         {
@@ -63,5 +70,6 @@ namespace Entities
             SqlParameter parameter = new SqlParameter("@PersonId",PersonId);
             return Database.ExecuteSqlRaw("EXECUTE [dbo].[DeletePerson] @PersonId", parameter);
         }
+       // public int sp_UpdatePerson(PersonUpdateRequest personUpdateRequest)
     }
 }

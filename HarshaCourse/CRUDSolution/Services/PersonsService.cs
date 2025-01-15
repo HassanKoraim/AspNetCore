@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 using Services.Helpers;
 using ServiceConstracts.Enums;
+using Microsoft.EntityFrameworkCore;
 
 namespace Services
 {
@@ -17,12 +18,12 @@ namespace Services
             _db = personsDbContext;
             _countriesService = countriesService;
         }
-        private PersonResponse? ConvertPersonIntoPersonResponse(Person? person)
+        /*private PersonResponse? ConvertPersonIntoPersonResponse(Person? person)
         {
             PersonResponse? personResponse = person?.ToPersonResponse();
-            personResponse.country = _countriesService.GetCountryByCountryId(person?.CountryId)?.CountryName;
+            personResponse.country = person?.Country?.CountryName;
             return personResponse;
-        }
+        }*/
         public PersonResponse AddPerson(PersonAddRequest? personAddRequest)
         {
             //Validta: if PersonAddRequest is null
@@ -44,7 +45,7 @@ namespace Services
             _db.SaveChanges. */
           _db.sp_InsertPerson(person);
 
-            return ConvertPersonIntoPersonResponse(person);     
+            return person.ToPersonResponse();     
         }
         /// <summary>
         /// Returns All Persons
@@ -52,16 +53,20 @@ namespace Services
         /// <returns>Returns a list of objects of PersonResponse Type</returns>
         public List<PersonResponse> GetAllPersons()
         {
-            /*          return _db.Persons.ToList().Select(temp => ConvertPersonIntoPersonResponse(temp)).ToList();*/
-            return _db.sp_GetAllPersons().Select(temp => ConvertPersonIntoPersonResponse(temp)).ToList();
+            var persons = _db.Persons.Include(nameof(Country)).ToList();
+            return persons.   
+                Select(temp => temp.ToPersonResponse()).ToList();
+            /*return _db.sp_GetAllPersons().
+                Select(temp => temp.ToPersonResponse()).ToList();*/
         }
         
         public PersonResponse? GetPersonByPersonId(Guid? personId)
         {
             if (personId == null) return null;
-            Person? person = _db.Persons.FirstOrDefault(temp => temp.PersonId == personId);
+            Person? person = _db.Persons.Include(nameof(Country)).
+                FirstOrDefault(temp => temp.PersonId == personId);
             if (person == null) return null;
-            PersonResponse? personResponse = ConvertPersonIntoPersonResponse(person);
+            PersonResponse? personResponse = person.ToPersonResponse();
             return personResponse;
         }
 
