@@ -16,18 +16,18 @@ namespace ServiceConstracts
         /// <param name="personAddRequest">Person to add</param>
         /// <returns>Returns the same Person details, 
         /// along with newly generated PersonId</returns>
-        PersonResponse AddPerson(PersonAddRequest? personAddRequest);
+        Task<PersonResponse> AddPerson(PersonAddRequest? personAddRequest);
         /// <summary>
         /// Returns all Persons
         /// </summary>
         /// <returns>Returns a list of objects of PersonResponse type</returns>
-        List<PersonResponse> GetAllPersons();
+        Task<List<PersonResponse>> GetAllPersons();
         /// <summary>
         /// Returns Person object based on the given person id
         /// </summary>
         /// <param name="personId">Person Id to search</param>
         /// <returns>Returns matching person object</returns>
-        PersonResponse? GetPersonByPersonId(Guid? personId);
+        Task<PersonResponse?> GetPersonByPersonId(Guid? personId);
         /// <summary>
         /// Returns all persons object that matches with the given search field and search string
         /// </summary>
@@ -35,7 +35,7 @@ namespace ServiceConstracts
         /// <param name="searchString">search string to search</param>
         /// <returns>Returns all matching Persons based on the given search
         /// field and search string</returns>
-        List<PersonResponse> GetFilteredPersons(string? searchBy, string? searchString);
+        Task<List<PersonResponse>> GetFilteredPersons(string? searchBy, string? searchString);
 
         /// <summary>
         /// Returns Sorted List of Persons
@@ -44,21 +44,21 @@ namespace ServiceConstracts
         /// <param name="sortBy">Name of property (Key), based on which the persons should be sorted</param>
         /// <param name="sortOrder">ASC or DESC</param>
         /// <returns>Returns sorted persons as PersonResponse List</returns>
-        List<PersonResponse> GetSortedPersons(List<PersonResponse> allPersons, string sortBy, SortOrderOptions sortOrder);
+        Task<List<PersonResponse>> GetSortedPersons(List<PersonResponse> allPersons, string sortBy, SortOrderOptions sortOrder);
 
         /// <summary>
         /// Updates the specified Person details based on the given Person Id 
         /// </summary>
         /// <param name="updatePersonRequest">Person details to update, including person id</param>
         /// <returns>Returns the person response object after updation</returns>
-        PersonResponse? UpdatePerson(PersonUpdateRequest? updatePersonRequest);
+        Task<PersonResponse?> UpdatePerson(PersonUpdateRequest? updatePersonRequest);
 
         /// <summary>
         /// Deletes a Person based on given Person Id 
         /// </summary>
         /// <param name="personId">PersonId to delete</param>
         /// <returns>Returns true, if deletion is successful; otherwise false </returns>
-        bool DeletePerson(Guid? personId);
+        Task<bool> DeletePerson(Guid? personId);
 
     }
 }
