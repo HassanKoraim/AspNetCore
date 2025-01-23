@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Y0QXYclh9JuzuHhmi0D1sK9klAdzfReTzJ/eplgSPCA=",
+  "Hash": "rivvUKp/5WQOJ8A6cr29z62T+VfFvkl8bWEU5J1N8F4=",
   "Source": "CRUDExample",
   "BasePath": "_content/CRUDExample",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\logo.png"
+    },
+    {
+      "Identity": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\CRUDSolution\\CRUDExample\\wwwroot\\Rotativa\\wkhtmltopdf.exe",
+      "SourceId": "CRUDExample",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\CRUDSolution\\CRUDExample\\wwwroot\\",
+      "BasePath": "_content/CRUDExample",
+      "RelativePath": "Rotativa/wkhtmltopdf.exe",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Rotativa\\wkhtmltopdf.exe"
     },
     {
       "Identity": "E:\\Coding\\CSharp\\AspNetCore\\HarshaCourse\\CRUDSolution\\CRUDExample\\wwwroot\\StyleSheet.css",

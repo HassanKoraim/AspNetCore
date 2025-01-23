@@ -6,6 +6,7 @@ using ServiceConstracts.Enums;
 using System.Collections.Generic;
 using Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Rotativa.AspNetCore;
 
 namespace CRUDExample.Controllers
 {
@@ -136,6 +137,22 @@ namespace CRUDExample.Controllers
             // call Delete method on service
             await _personsService.DeletePerson(personUpdateRequest.PersonId);
             return RedirectToAction("Index", "Persons");
+        }
+        [Route("PersonPdf")]
+        public async Task<IActionResult> PersonsPdf()
+        {
+            List<PersonResponse> Persons = await _personsService.GetAllPersons();
+            return new ViewAsPdf("PersonsPdf", Persons, ViewData)
+            {
+                PageMargins = new Rotativa.AspNetCore.Options.Margins()
+                {
+                    Top = 20,
+                    Right = 20,
+                    Left = 20,
+                    Bottom = 20
+                },
+                PageOrientation = Rotativa.AspNetCore.Options.Orientation.Landscape
+            };
         }
 
     }

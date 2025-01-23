@@ -6,7 +6,8 @@
     ViewBag.Title = "Persons";
 }
 <h1>@ViewBag.Title</h1>
-<a href="~/persons/create">Create New Person</a>
+<a asp-controller="Persons" asp-action="create">Create New Person</a>
+<a asp-controller="Persons" asp-action="PersonsPdf">Download as Pdf</a>
 <form asp-controller="Persons" asp-action ="Index" method="get">
     <div class="box flex">
         <div class="flex-1">
@@ -22,8 +23,6 @@
                     {
                         <option value="@field.Key">@field.Value</option>
                     }
-
-
                 }
             </select>
         </div>
