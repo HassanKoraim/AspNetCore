@@ -296,6 +296,7 @@ a.link-hover:hover {
 }
 
 .button {
+/*    padding: 8px 12px;*/
     padding: 8px 12px;
     border: 2px solid #cacaca;
     border-radius: 8px;

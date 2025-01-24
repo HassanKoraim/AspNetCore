@@ -83,3 +83,8 @@ E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\bin\Debug\net6
 E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
 E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\bin\Debug\net6.0\Rotativa.AspNetCore.dll
 E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\obj\Debug\net6.0\CRUDExample.MvcApplicationPartsAssemblyInfo.cs
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\bin\Debug\net6.0\CsvHelper.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\bin\Debug\net6.0\EPPlus.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\bin\Debug\net6.0\EPPlus.Interfaces.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\bin\Debug\net6.0\EPPlus.System.Drawing.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\bin\Debug\net6.0\Microsoft.IO.RecyclableMemoryStream.dll

@@ -6,6 +6,11 @@ using System.Runtime.CompilerServices;
 using Services.Helpers;
 using ServiceConstracts.Enums;
 using Microsoft.EntityFrameworkCore;
+using System.IO;
+using CsvHelper;
+using System.Globalization;
+using CsvHelper.Configuration;
+using OfficeOpenXml;
 
 namespace Services
 {
@@ -232,6 +237,95 @@ namespace Services
                                // _db.sp_DeletePerson(personId);
             return true;
 
+        }
+
+        public async Task<MemoryStream> GetPersonsCSV(List<PersonResponse> persons)
+        {
+            MemoryStream memoryStream = new MemoryStream();
+            StreamWriter streamWriter = new StreamWriter(memoryStream);
+            CsvConfiguration csvConfiguration = new CsvConfiguration(CultureInfo.InvariantCulture);
+            CsvWriter csvWriter = new CsvWriter(streamWriter,csvConfiguration);
+            // PersonName,Email...
+            //csvWriter.WriteHeader<PersonResponse>();
+            csvWriter.WriteField(nameof(PersonResponse.PersonName));
+            csvWriter.WriteField(nameof(PersonResponse.Email));
+            csvWriter.WriteField(nameof(PersonResponse.DateOfBirth));
+            csvWriter.WriteField(nameof(PersonResponse.Age));
+            csvWriter.WriteField(nameof(PersonResponse.Gender));
+            csvWriter.WriteField(nameof(PersonResponse.country));
+            csvWriter.WriteField(nameof(PersonResponse.Address));
+            csvWriter.WriteField(nameof(PersonResponse.ReceiveNewsLetter));
+            csvWriter.NextRecord();
+            /*List<PersonResponse>? persons = await _db.Persons.Include("Country")
+                .Select(temp => temp.ToPersonResponse()).ToListAsync();*/
+            foreach(PersonResponse person in persons)
+            {
+                csvWriter.WriteField(person.PersonName);
+                csvWriter.WriteField(person.Email);
+                if (person.DateOfBirth.HasValue)
+                    csvWriter.WriteField(person.DateOfBirth.Value.ToString("yyyy-MM-dd"));
+                else csvWriter.WriteField("");
+                csvWriter.WriteField(person.Age);
+                csvWriter.WriteField(person.Gender);
+                csvWriter.WriteField(person.country);
+                csvWriter.WriteField(person.Address);
+                csvWriter.WriteField(person.ReceiveNewsLetter);
+                csvWriter.NextRecord();
+                csvWriter.Flush();
+            }
+           // await csvWriter.WriteRecordsAsync(persons);
+            memoryStream.Position = 0;
+            return memoryStream;
+        }
+
+        public async Task<MemoryStream> GetPersonsExcel(List<PersonResponse> persons)
+        {
+            MemoryStream memoryStream = new MemoryStream();
+            using(ExcelPackage excelPackage = new ExcelPackage(memoryStream))
+            {
+                ExcelWorksheet worksheet =
+                    excelPackage.Workbook.Worksheets.Add("PersonsSheet");
+                worksheet.Cells["A1"].Value = "Person Name";
+                worksheet.Cells["B1"].Value = "Email";
+                worksheet.Cells["C1"].Value = "Date Of Birth";
+                worksheet.Cells["D1"].Value = "Age";
+                worksheet.Cells["E1"].Value = "Gender";
+                worksheet.Cells["F1"].Value = "Country";
+                worksheet.Cells["G1"].Value = "Address";
+                worksheet.Cells["H1"].Value = "Receive News Letters";
+                using (ExcelRange headerCells = worksheet.Cells["A1:H1"])
+                {
+                    headerCells.Style.Fill.PatternType =
+                        OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    headerCells.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightGray);
+                    headerCells.Style.Font.Bold = true;
+                }
+                int row = 2;
+                /*List<PersonResponse> persons = 
+                    _db.Persons.Include("Country").Select(temp => temp.ToPersonResponse()).ToList();*/
+                foreach(PersonResponse person in persons)
+                {
+                   // worksheet.Cells[$"A{row}"].Value = person.PersonName;
+                              // Cells[numberOfRow, NumberOfColumn]
+                    worksheet.Cells[row,1].Value = person.PersonName;
+                    worksheet.Cells[row,2].Value = person.Email;
+                    if (person.DateOfBirth.HasValue)
+                        worksheet.Cells[row ,3].Value = person.DateOfBirth.Value.ToString("yyyy-MM-dd");
+                    else
+                        worksheet.Cells[row, 3].Value = "";
+                    worksheet.Cells[row, 4].Value = person.Age;
+                    worksheet.Cells[row, 5].Value = person.Gender;
+                    worksheet.Cells[row, 6].Value = person.country;
+                    worksheet.Cells[row, 7].Value = person.Address;
+                    worksheet.Cells[row, 8].Value = person.ReceiveNewsLetter;
+                    row++;
+                }
+
+                worksheet.Cells[$"A1:H{row}"].AutoFitColumns();
+                await excelPackage.SaveAsync();
+                memoryStream.Position = 0;
+                return memoryStream;
+            }
         }
     }
 }

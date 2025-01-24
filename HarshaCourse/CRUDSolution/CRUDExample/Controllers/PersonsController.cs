@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Rotativa.AspNetCore;
+using System.Text.Json;
+using Microsoft.Extensions.Options;
 
 namespace CRUDExample.Controllers
 {
@@ -139,10 +141,15 @@ namespace CRUDExample.Controllers
             return RedirectToAction("Index", "Persons");
         }
         [Route("PersonPdf")]
-        public async Task<IActionResult> PersonsPdf()
+        public async Task<IActionResult> PersonsPdf(string persons)
         {
-            List<PersonResponse> Persons = await _personsService.GetAllPersons();
-            return new ViewAsPdf("PersonsPdf", Persons, ViewData)
+            // List<PersonResponse> persons = await _personsService.GetAllPersons();
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+            var personList = JsonSerializer.Deserialize<List<PersonResponse>>(persons, options);
+            return new ViewAsPdf("PersonsPdf", personList, ViewData)
             {
                 PageMargins = new Rotativa.AspNetCore.Options.Margins()
                 {
@@ -153,6 +160,29 @@ namespace CRUDExample.Controllers
                 },
                 PageOrientation = Rotativa.AspNetCore.Options.Orientation.Landscape
             };
+        }
+
+        [Route("PersonsCSV")]
+        public async Task<IActionResult> PersonsCSV(string persons)
+        {
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+            var personList = JsonSerializer.Deserialize<List<PersonResponse>>(persons, options);
+            MemoryStream memoryStream = await _personsService.GetPersonsCSV(personList);
+            return File(memoryStream, "application/octet-stream", "persons.csv");
+        }
+        [Route("PersonsExcel")]
+        public async Task<IActionResult> PersonsExcel(string persons)
+        {
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+            var personList = JsonSerializer.Deserialize<List<PersonResponse>>(persons, options);
+            MemoryStream memoryStream = await _personsService.GetPersonsExcel(personList);
+            return File(memoryStream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "persons.xlsx");
         }
 
     }
