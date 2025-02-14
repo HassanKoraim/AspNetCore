@@ -25,6 +25,7 @@ namespace CRUDExample.Controllers
             if (excelFile == null || excelFile.Length == 0)
             {
                 ViewBag.ErrorMessage = "Please select an xlsx file";
+                return View();
             }
             if (!Path.GetExtension(excelFile.FileName).Equals(".xlsx", StringComparison.OrdinalIgnoreCase))
             {

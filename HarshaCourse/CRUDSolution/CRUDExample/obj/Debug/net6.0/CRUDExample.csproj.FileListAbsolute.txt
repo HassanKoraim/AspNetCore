@@ -88,3 +88,7 @@ E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\bin\Debug\net6
 E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\bin\Debug\net6.0\EPPlus.Interfaces.dll
 E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\bin\Debug\net6.0\EPPlus.System.Drawing.dll
 E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\bin\Debug\net6.0\Microsoft.IO.RecyclableMemoryStream.dll
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\bin\Debug\net6.0\CRUDExample.staticwebassets.endpoints.json
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\obj\Debug\net6.0\staticwebassets.build.endpoints.json
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\obj\Debug\net6.0\staticwebassets\msbuild.CRUDExample.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+E:\Coding\CSharp\AspNetCore\HarshaCourse\CRUDSolution\CRUDExample\obj\Debug\net6.0\staticwebassets.upToDateCheck.txt

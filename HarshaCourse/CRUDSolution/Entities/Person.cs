@@ -11,7 +11,7 @@ namespace Entities
     public class Person
     {
         [Required (ErrorMessage = "Person Id can't be blank")]
-        [Key]
+        [Key]   
         public Guid PersonId { get; set; }
 
         [Required(ErrorMessage = "Person Name can't be blank")]

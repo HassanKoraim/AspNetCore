@@ -59,7 +59,7 @@ namespace Services
         public async Task<List<PersonResponse>> GetAllPersons()
         {
             var persons = await _db.Persons.Include(nameof(Country)).ToListAsync();
-            return persons.   
+            return persons.
                 Select(temp => temp.ToPersonResponse()).ToList();
             /*return _db.sp_GetAllPersons().
                 Select(temp => temp.ToPersonResponse()).ToList();*/
