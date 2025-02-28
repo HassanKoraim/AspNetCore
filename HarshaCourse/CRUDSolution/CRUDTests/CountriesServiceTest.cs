@@ -7,6 +7,9 @@ using Services;
 using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
 using Microsoft.EntityFrameworkCore;
+using EntityFrameworkCoreMock;
+using Moq;
+
 namespace CRUDTests
 {
     public class CountriesServiceTest
@@ -15,7 +18,13 @@ namespace CRUDTests
         // Constructor
         public CountriesServiceTest()
         {
-            _countriesService = new CountriesService(new PersonsDbContext(new DbContextOptionsBuilder<PersonsDbContext>().Options));
+            var countriesIntialData = new List<Country>();
+            DbContextMock<ApplicationDbContext> dbContextMock = new DbContextMock<ApplicationDbContext>(
+                new DbContextOptionsBuilder<ApplicationDbContext>().Options
+            );
+            ApplicationDbContext dbContext = dbContextMock.Object; 
+            dbContextMock.CreateDbSetMock(temp => temp.Countries, countriesIntialData);
+            _countriesService = new CountriesService(dbContext);
            
         }
 

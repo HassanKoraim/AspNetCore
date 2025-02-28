@@ -6,6 +6,8 @@ using Entities;
 using Xunit.Abstractions;
 using Xunit.Sdk;
 using Microsoft.EntityFrameworkCore;
+using EntityFrameworkCoreMock;
+using Moq;
 
 namespace CRUDTests
 {
@@ -18,8 +20,15 @@ namespace CRUDTests
         //Constructor
         public PersonsServiceTest(ITestOutputHelper testOutputHelper)
         {
-            _countriesService = new CountriesService(new PersonsDbContext(new DbContextOptionsBuilder<PersonsDbContext>().Options));
-            _personsService = new PersonsService(new PersonsDbContext(new DbContextOptionsBuilder<PersonsDbContext>().Options),_countriesService);
+            var CountriesIntialData = new List<Country>();
+            var personsIntailData = new List<Person>();
+            DbContextMock<ApplicationDbContext> dbContextMock =
+                new DbContextMock<ApplicationDbContext>(new DbContextOptionsBuilder<ApplicationDbContext>().Options);
+            ApplicationDbContext dbContext = dbContextMock.Object ;
+            dbContextMock.CreateDbSetMock(temp => temp.Countries, CountriesIntialData);
+            dbContextMock.CreateDbSetMock(temp => temp.Persons,personsIntailData);
+            _countriesService = new CountriesService(dbContext);
+            _personsService = new PersonsService(dbContext,_countriesService);
             _testOutputHelper = testOutputHelper;
         }
         #region AddPerson
@@ -78,8 +87,8 @@ namespace CRUDTests
         {
             //Arrange 
             PersonAddRequest? personAddRequest = new PersonAddRequest {
-                PersonName = "Hassan", Email = "HassanKoraim2@gmail.com", Address = "Elwakf",
-                Gender = GenderOptions.Male, ReceiveNewsLetter = true };
+                PersonName = "Hassan 52548", Email = "HassanKoraim2@gmail.com", Address = "Elwakf",
+                CountryId = Guid.Parse("8F30BEDC-47DD-4286-8950-73D8A68E5D41"), Gender = GenderOptions.Male, ReceiveNewsLetter = true };
 
             //Act
             PersonResponse personResponse = await _personsService.AddPerson(personAddRequest);

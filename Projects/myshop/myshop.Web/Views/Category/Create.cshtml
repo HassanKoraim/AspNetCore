@@ -1,0 +1,31 @@
+﻿@model Category
+@{
+    ViewBag.PageTitle = "Categories Management";
+    ViewBag.Title = "Create Category";
+}
+<form method="post">
+     @Html.AntiForgeryToken()
+      <div class="mb-3">
+        <label asp-for="Id"></label>
+        <input asp-for="Id" class="form-control" \ />
+        <span asp-validation-for="Id" class="text-danger"></span>
+    </div> 
+    <div class="mb-3">
+    <label asp-for="Name"></label>
+    <input asp-for="Name" class="form-control"\ />
+    <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+    <label asp-for="Description"></label>
+    <input asp-for="Description" class="form-control" \ />
+    <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Create</button>
+        <a asp-action="Index" asp-controller="Category" class="btn btn-warning">Back to Index</a>
+    </div>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
