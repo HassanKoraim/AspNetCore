@@ -36,7 +36,7 @@ namespace Services
             //Model Validations 
             ValidationHelper.ModelValidation(personAddRequest);
             //Validate: if Perosn Name is already exists
-            if((await _personsRepository.GetAllPersons()).Where(temp => temp.PersonName == personAddRequest.PersonName).Count() > 0)
+            if ((await _personsRepository.GetAllPersons()).Where(temp => temp.PersonName == personAddRequest.PersonName).Count() > 0)
             {
                 throw new ArgumentException("Given Person Name is already exists");
             }
@@ -196,8 +196,9 @@ namespace Services
             // Get matching Person object to UpdatePersonRequest
              Person? matchingPerson = await _personsRepository.GetPersonByPersonId(updatePersonRequest.PersonId);
             if (matchingPerson == null) throw new ArgumentException("Given Person Id Not exist");
+            Person person_for_update = updatePersonRequest.ToPerson();
             //Update all
-            await _personsRepository.UpdatePerson(matchingPerson);
+            await _personsRepository.UpdatePerson(person_for_update);
            /* matchingPerson.PersonName = updatePersonRequest.PersonName;
             matchingPerson.Email = updatePersonRequest.Email;
             matchingPerson.DateOfBirth = updatePersonRequest.DateOfBirth;
